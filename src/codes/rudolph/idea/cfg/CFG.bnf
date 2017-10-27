@@ -1,0 +1,80 @@
+{
+  parserClass="codes.rudolph.idea.cfg.parser.CFGParser"
+
+  extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
+
+  psiClassPrefix="CFG"
+  psiImplClassSuffix="Impl"
+  psiPackage="codes.rudolph.idea.cfg.psi"
+  psiImplPackage="codes.rudolph.idea.cfg.psi.impl"
+
+  elementTypeHolderClass="codes.rudolph.idea.cfg.psi.CFGTypes"
+  elementTypeClass="codes.rudolph.idea.cfg.psi.CFGElementType"
+  tokenTypeClass="codes.rudolph.idea.cfg.psi.CFGTokenType"
+}
+
+ContextFreeGrammar ::= COMMENT* ModuleDefinition (ImportDefinition | COMMENT)* (RuleDefinition | COMMENT)*
+
+ModuleDefinition ::= MODULE_DEF FullQualifiedRuleOrModuleName DEFINITION_END
+ImportDefinition ::= IMPORT_DEF FullQualifiedRuleOrModuleName [ALIAS_OP FullQualifiedRuleOrModuleName] DEFINITION_END
+RuleDefinition ::= NAME RUL_OP Expression DEFINITION_END
+
+FullQualifiedRuleOrModuleName ::= NAME (SUB_MODULE_OP NAME)*
+
+// Binary Recursive Operators: From least to most binding:
+// - Exclusion: A / B
+// - Alternative: A | B
+// - Sequence: A B
+// - Range: A - B
+//
+// That means:
+// - A / B C   <=> A / (B C)
+// - A B / C   <=> (A B) / C
+// - A | B / C <=> (A | B) / C
+// - A / B | C <=> A / (B | C)
+// - A B | C   <=> (A B) | C
+// - A | B C   <=> A | (B C)
+// - A - B C   <=> (A - B) C
+// - A B - C   <=> A (B - C)
+// - A - B | C <=> (A - B) | C
+// - A | B - C <=> A | (B - C)
+// - A - B / C <=> (A - B) / C
+// - A / B - C <=> A / (B - C)
+
+//Source: http://www.fh-wedel.de/~si/vorlesungen/cb/Beispiele/parser/expr/expr.html
+Expression ::= AlternativeX Exclusion
+Exclusion ::= EXC_OP AlternativeX Exclusion
+            |
+
+AlternativeX ::= SequenceX Alternative
+Alternative ::= ALT_OP SequenceX Alternative
+              |
+              
+SequenceX ::= RangeX Sequence
+Sequence ::= RangeX Sequence
+           |
+           
+RangeX ::= Unary Range     
+Range ::= RNG_OP Unary Range
+        |
+             
+Unary ::= Terminal
+        | FullQualifiedRuleOrModuleName
+        | Optional
+        | DelimitedRepetition
+        | Group
+
+Terminal ::= STRING
+           | UNICODE
+           
+Optional ::= OPT_OPEN Expression OPT_CLOSE
+
+DelimitedRepetition ::= REP_OPEN [Min] Expression [Delimiter] [Max] REP_CLOSE
+Min ::= NATURAL_NUMBER REP_MIN_CLOSE
+Delimiter ::= REP_DELIM Expression
+
+Max ::= REP_MAX_OPEN MaxValue
+MaxValue ::= NON_ZERO_NATURAL_NUMBER 
+           | INFINITE
+
+Group ::= GR_OPEN Expression GR_CLOSE

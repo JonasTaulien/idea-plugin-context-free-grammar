@@ -1,0 +1,35 @@
+<idea-plugin>
+  <id>com.your.company.unique.plugin.id</id>
+  <name>Context Free Grammar</name>
+  <version>0.1</version>
+  <vendor email="jonas.ru@gmx.de" url="http://www.rudolph.codes">Jonas Rudolph</vendor>
+
+  <description><![CDATA[
+      Adds support for an EBNF-like context free grammar.<br>
+      Made by <a href="http://www.rudolph.codes">Jonas Rudolph</a>
+    ]]></description>
+
+  <change-notes><![CDATA[
+      For changes see CHANGELOG.md
+    ]]>
+  </change-notes>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+  <idea-version since-build="145.0"/>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+       on how to target different products -->
+  <!-- uncomment to enable plugin in all products
+  <depends>com.intellij.modules.lang</depends>
+  -->
+
+  <extensions defaultExtensionNs="com.intellij">
+      <fileTypeFactory implementation="codes.rudolph.idea.cfg.CFGFileTypeFactory"/>
+      <lang.parserDefinition language="CFGLanguage" implementationClass="codes.rudolph.idea.cfg.CFGParserDefinition"/>
+  </extensions>
+
+  <actions>
+    <!-- Add your actions here -->
+  </actions>
+
+</idea-plugin>
