@@ -1,1 +1,1 @@
-# JetBrains IDEA Support for context free grammars
+# JetBrains IDEA support for context free grammars

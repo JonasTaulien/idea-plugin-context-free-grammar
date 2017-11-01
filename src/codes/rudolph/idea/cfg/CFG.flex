@@ -133,7 +133,7 @@ ALIAS_OP="as"
 }
 
 <EXPRESSION> {
-  {NAME}                       { yybegin(SUBMODULE_REFERENCE_OR_OPERATOR_OR_END); return NAME; }
+  {NAME}                       { yybegin(???); return NAME; }
 }
 
 {WHITE_SPACE}                  { return WHITE_SPACE; }

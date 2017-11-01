@@ -544,7 +544,7 @@ public class CFGLexer implements FlexLexer {
             }
           case 24: break;
           case 11: 
-            { yybegin(SUBMODULE_REFERENCE_OR_OPERATOR_OR_END); return NAME;
+            { yybegin(???); return NAME;
             }
           case 25: break;
           case 12: 
