@@ -56,6 +56,7 @@ public interface CFGTypes {
   IElementType RNG_OP = new CFGTokenType("RNG_OP");
   IElementType RUL_OP = new CFGTokenType("RUL_OP");
   IElementType SEQUENCE_1_0 = new CFGTokenType("Sequence_1_0");
+  IElementType SEQ_OP = new CFGTokenType("SEQ_OP");
   IElementType STRING = new CFGTokenType("STRING");
   IElementType SUB_MODULE_OP = new CFGTokenType("SUB_MODULE_OP");
   IElementType UNICODE = new CFGTokenType("UNICODE");

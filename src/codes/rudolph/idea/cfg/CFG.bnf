@@ -19,8 +19,6 @@ ModuleDefinition ::= MODULE_DEF FullQualifiedRuleOrModuleName DEFINITION_END
 ImportDefinition ::= IMPORT_DEF FullQualifiedRuleOrModuleName [ALIAS_OP FullQualifiedRuleOrModuleName] DEFINITION_END
 RuleDefinition ::= NAME RUL_OP Expression DEFINITION_END
 
-FullQualifiedRuleOrModuleName ::= NAME (SUB_MODULE_OP NAME)*
-
 // Binary Recursive Operators: From least to most binding:
 // - Exclusion: A / B
 // - Alternative: A | B
@@ -51,13 +49,13 @@ Alternative ::= ALT_OP SequenceX Alternative
               |
               
 SequenceX ::= RangeX Sequence
-Sequence ::= RangeX Sequence
+Sequence ::= SEQ_OP RangeX Sequence
            |
            
-RangeX ::= Unary Range     
+RangeX ::= Unary Range
 Range ::= RNG_OP Unary Range
         |
-             
+
 Unary ::= Terminal
         | FullQualifiedRuleOrModuleName
         | Optional
@@ -66,7 +64,9 @@ Unary ::= Terminal
 
 Terminal ::= STRING
            | UNICODE
-           
+
+FullQualifiedRuleOrModuleName ::= NAME (SUB_MODULE_OP NAME)*
+
 Optional ::= OPT_OPEN Expression OPT_CLOSE
 
 DelimitedRepetition ::= REP_OPEN [Min] Expression [Delimiter] [Max] REP_CLOSE

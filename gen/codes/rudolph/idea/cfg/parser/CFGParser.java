@@ -447,7 +447,6 @@ public class CFGParser implements PsiParser, LightPsiParser {
   /* ********************************************************** */
   // RNG_OP Unary Range
   //         |
-  //              
   public static boolean Range(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Range")) return false;
     boolean r;
@@ -497,7 +496,7 @@ public class CFGParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // RangeX Sequence
+  // SEQ_OP RangeX Sequence
   //            |
   //            
   public static boolean Sequence(PsiBuilder b, int l) {
@@ -510,12 +509,13 @@ public class CFGParser implements PsiParser, LightPsiParser {
     return r;
   }
 
-  // RangeX Sequence
+  // SEQ_OP RangeX Sequence
   private static boolean Sequence_0(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Sequence_0")) return false;
     boolean r;
     Marker m = enter_section_(b);
-    r = RangeX(b, l + 1);
+    r = consumeToken(b, SEQ_OP);
+    r = r && RangeX(b, l + 1);
     r = r && Sequence(b, l + 1);
     exit_section_(b, m, null, r);
     return r;
