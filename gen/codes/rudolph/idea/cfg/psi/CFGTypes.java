@@ -25,40 +25,37 @@ public interface CFGTypes {
   IElementType RANGE = new CFGElementType("RANGE");
   IElementType RANGE_X = new CFGElementType("RANGE_X");
   IElementType RULE_DEFINITION = new CFGElementType("RULE_DEFINITION");
-  IElementType SEQUENCE = new CFGElementType("SEQUENCE");
   IElementType SEQUENCE_X = new CFGElementType("SEQUENCE_X");
   IElementType TERMINAL = new CFGElementType("TERMINAL");
   IElementType UNARY = new CFGElementType("UNARY");
 
-  IElementType ALIAS_OP = new CFGTokenType("ALIAS_OP");
+  IElementType ALIAS_OP = new CFGTokenType("as");
   IElementType ALTERNATIVE_1_0 = new CFGTokenType("Alternative_1_0");
-  IElementType ALT_OP = new CFGTokenType("ALT_OP");
+  IElementType ALT_OP = new CFGTokenType("|");
   IElementType COMMENT = new CFGTokenType("COMMENT");
-  IElementType DEFINITION_END = new CFGTokenType("DEFINITION_END");
+  IElementType DEFINITION_END = new CFGTokenType(";");
   IElementType EXCLUSION_1_0 = new CFGTokenType("Exclusion_1_0");
-  IElementType EXC_OP = new CFGTokenType("EXC_OP");
-  IElementType GR_CLOSE = new CFGTokenType("GR_CLOSE");
-  IElementType GR_OPEN = new CFGTokenType("GR_OPEN");
-  IElementType IMPORT_DEF = new CFGTokenType("IMPORT_DEF");
-  IElementType INFINITE = new CFGTokenType("INFINITE");
-  IElementType MODULE_DEF = new CFGTokenType("MODULE_DEF");
-  IElementType NAME = new CFGTokenType("NAME");
+  IElementType EXC_OP = new CFGTokenType("/");
+  IElementType GR_CLOSE = new CFGTokenType(")");
+  IElementType GR_OPEN = new CFGTokenType("(");
+  IElementType ID = new CFGTokenType("ID");
+  IElementType IMPORT_DEF = new CFGTokenType("import");
+  IElementType INFINITE = new CFGTokenType("*");
+  IElementType MODULE_DEF = new CFGTokenType("module");
   IElementType NATURAL_NUMBER = new CFGTokenType("NATURAL_NUMBER");
   IElementType NON_ZERO_NATURAL_NUMBER = new CFGTokenType("NON_ZERO_NATURAL_NUMBER");
-  IElementType OPT_CLOSE = new CFGTokenType("OPT_CLOSE");
-  IElementType OPT_OPEN = new CFGTokenType("OPT_OPEN");
+  IElementType OPT_CLOSE = new CFGTokenType("]");
+  IElementType OPT_OPEN = new CFGTokenType("[");
   IElementType RANGE_1_0 = new CFGTokenType("Range_1_0");
-  IElementType REP_CLOSE = new CFGTokenType("REP_CLOSE");
-  IElementType REP_DELIM = new CFGTokenType("REP_DELIM");
-  IElementType REP_MAX_OPEN = new CFGTokenType("REP_MAX_OPEN");
-  IElementType REP_MIN_CLOSE = new CFGTokenType("REP_MIN_CLOSE");
-  IElementType REP_OPEN = new CFGTokenType("REP_OPEN");
-  IElementType RNG_OP = new CFGTokenType("RNG_OP");
-  IElementType RUL_OP = new CFGTokenType("RUL_OP");
-  IElementType SEQUENCE_1_0 = new CFGTokenType("Sequence_1_0");
-  IElementType SEQ_OP = new CFGTokenType("SEQ_OP");
+  IElementType REP_CLOSE = new CFGTokenType("}");
+  IElementType REP_DELIM = new CFGTokenType("$");
+  IElementType REP_MAX_OPEN = new CFGTokenType("<");
+  IElementType REP_MIN_CLOSE = new CFGTokenType(">");
+  IElementType REP_OPEN = new CFGTokenType("{");
+  IElementType RNG_OP = new CFGTokenType("-");
+  IElementType RUL_OP = new CFGTokenType(":");
   IElementType STRING = new CFGTokenType("STRING");
-  IElementType SUB_MODULE_OP = new CFGTokenType("SUB_MODULE_OP");
+  IElementType SUB_MODULE_OP = new CFGTokenType(".");
   IElementType UNICODE = new CFGTokenType("UNICODE");
 
   class Factory {
@@ -114,9 +111,6 @@ public interface CFGTypes {
       }
       else if (type == RULE_DEFINITION) {
         return new CFGRuleDefinitionImpl(node);
-      }
-      else if (type == SEQUENCE) {
-        return new CFGSequenceImpl(node);
       }
       else if (type == SEQUENCE_X) {
         return new CFGSequenceXImpl(node);

@@ -10,7 +10,7 @@ public interface CFGDelimitedRepetition extends PsiElement {
   @Nullable
   CFGDelimiter getDelimiter();
 
-  @NotNull
+  @Nullable
   CFGExpression getExpression();
 
   @Nullable

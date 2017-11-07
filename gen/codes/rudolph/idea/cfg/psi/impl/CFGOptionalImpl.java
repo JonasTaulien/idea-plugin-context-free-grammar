@@ -27,9 +27,9 @@ public class CFGOptionalImpl extends ASTWrapperPsiElement implements CFGOptional
   }
 
   @Override
-  @NotNull
+  @Nullable
   public CFGExpression getExpression() {
-    return findNotNullChildByClass(CFGExpression.class);
+    return findChildByClass(CFGExpression.class);
   }
 
 }

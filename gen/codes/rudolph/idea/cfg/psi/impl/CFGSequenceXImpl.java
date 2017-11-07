@@ -28,14 +28,8 @@ public class CFGSequenceXImpl extends ASTWrapperPsiElement implements CFGSequenc
 
   @Override
   @NotNull
-  public CFGRangeX getRangeX() {
-    return findNotNullChildByClass(CFGRangeX.class);
-  }
-
-  @Override
-  @NotNull
-  public CFGSequence getSequence() {
-    return findNotNullChildByClass(CFGSequence.class);
+  public List<CFGRangeX> getRangeXList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, CFGRangeX.class);
   }
 
 }

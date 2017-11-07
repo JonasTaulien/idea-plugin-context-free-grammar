@@ -7,4 +7,10 @@ import com.intellij.psi.PsiElement;
 
 public interface CFGTerminal extends PsiElement {
 
+  @Nullable
+  PsiElement getString();
+
+  @Nullable
+  PsiElement getUnicode();
+
 }

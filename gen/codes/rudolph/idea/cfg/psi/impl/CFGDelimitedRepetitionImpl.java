@@ -33,9 +33,9 @@ public class CFGDelimitedRepetitionImpl extends ASTWrapperPsiElement implements 
   }
 
   @Override
-  @NotNull
+  @Nullable
   public CFGExpression getExpression() {
-    return findNotNullChildByClass(CFGExpression.class);
+    return findChildByClass(CFGExpression.class);
   }
 
   @Override

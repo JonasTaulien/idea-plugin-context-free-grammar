@@ -74,9 +74,6 @@ public class CFGParser implements PsiParser, LightPsiParser {
     else if (t == RULE_DEFINITION) {
       r = RuleDefinition(b, 0);
     }
-    else if (t == SEQUENCE) {
-      r = Sequence(b, 0);
-    }
     else if (t == SEQUENCE_X) {
       r = SequenceX(b, 0);
     }
@@ -212,16 +209,17 @@ public class CFGParser implements PsiParser, LightPsiParser {
   public static boolean DelimitedRepetition(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "DelimitedRepetition")) return false;
     if (!nextTokenIs(b, REP_OPEN)) return false;
-    boolean r;
-    Marker m = enter_section_(b);
+    boolean r, p;
+    Marker m = enter_section_(b, l, _NONE_, DELIMITED_REPETITION, null);
     r = consumeToken(b, REP_OPEN);
-    r = r && DelimitedRepetition_1(b, l + 1);
-    r = r && Expression(b, l + 1);
-    r = r && DelimitedRepetition_3(b, l + 1);
-    r = r && DelimitedRepetition_4(b, l + 1);
-    r = r && consumeToken(b, REP_CLOSE);
-    exit_section_(b, m, DELIMITED_REPETITION, r);
-    return r;
+    p = r; // pin = 1
+    r = r && report_error_(b, DelimitedRepetition_1(b, l + 1));
+    r = p && report_error_(b, Expression(b, l + 1)) && r;
+    r = p && report_error_(b, DelimitedRepetition_3(b, l + 1)) && r;
+    r = p && report_error_(b, DelimitedRepetition_4(b, l + 1)) && r;
+    r = p && consumeToken(b, REP_CLOSE) && r;
+    exit_section_(b, l, m, r, p, null);
+    return r || p;
   }
 
   // [Min]
@@ -250,12 +248,13 @@ public class CFGParser implements PsiParser, LightPsiParser {
   public static boolean Delimiter(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Delimiter")) return false;
     if (!nextTokenIs(b, REP_DELIM)) return false;
-    boolean r;
-    Marker m = enter_section_(b);
+    boolean r, p;
+    Marker m = enter_section_(b, l, _NONE_, DELIMITER, null);
     r = consumeToken(b, REP_DELIM);
+    p = r; // pin = 1
     r = r && Expression(b, l + 1);
-    exit_section_(b, m, DELIMITER, r);
-    return r;
+    exit_section_(b, l, m, r, p, null);
+    return r || p;
   }
 
   /* ********************************************************** */
@@ -296,19 +295,20 @@ public class CFGParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // NAME (SUB_MODULE_OP NAME)*
+  // ID (SUB_MODULE_OP ID)*
   public static boolean FullQualifiedRuleOrModuleName(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "FullQualifiedRuleOrModuleName")) return false;
-    if (!nextTokenIs(b, NAME)) return false;
-    boolean r;
-    Marker m = enter_section_(b);
-    r = consumeToken(b, NAME);
+    if (!nextTokenIs(b, ID)) return false;
+    boolean r, p;
+    Marker m = enter_section_(b, l, _NONE_, FULL_QUALIFIED_RULE_OR_MODULE_NAME, null);
+    r = consumeToken(b, ID);
+    p = r; // pin = 1
     r = r && FullQualifiedRuleOrModuleName_1(b, l + 1);
-    exit_section_(b, m, FULL_QUALIFIED_RULE_OR_MODULE_NAME, r);
-    return r;
+    exit_section_(b, l, m, r, p, null);
+    return r || p;
   }
 
-  // (SUB_MODULE_OP NAME)*
+  // (SUB_MODULE_OP ID)*
   private static boolean FullQualifiedRuleOrModuleName_1(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "FullQualifiedRuleOrModuleName_1")) return false;
     int c = current_position_(b);
@@ -320,12 +320,12 @@ public class CFGParser implements PsiParser, LightPsiParser {
     return true;
   }
 
-  // SUB_MODULE_OP NAME
+  // SUB_MODULE_OP ID
   private static boolean FullQualifiedRuleOrModuleName_1_0(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "FullQualifiedRuleOrModuleName_1_0")) return false;
     boolean r;
     Marker m = enter_section_(b);
-    r = consumeTokens(b, 0, SUB_MODULE_OP, NAME);
+    r = consumeTokens(b, 0, SUB_MODULE_OP, ID);
     exit_section_(b, m, null, r);
     return r;
   }
@@ -335,13 +335,14 @@ public class CFGParser implements PsiParser, LightPsiParser {
   public static boolean Group(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Group")) return false;
     if (!nextTokenIs(b, GR_OPEN)) return false;
-    boolean r;
-    Marker m = enter_section_(b);
+    boolean r, p;
+    Marker m = enter_section_(b, l, _NONE_, GROUP, null);
     r = consumeToken(b, GR_OPEN);
-    r = r && Expression(b, l + 1);
-    r = r && consumeToken(b, GR_CLOSE);
-    exit_section_(b, m, GROUP, r);
-    return r;
+    p = r; // pin = 1
+    r = r && report_error_(b, Expression(b, l + 1));
+    r = p && consumeToken(b, GR_CLOSE) && r;
+    exit_section_(b, l, m, r, p, null);
+    return r || p;
   }
 
   /* ********************************************************** */
@@ -349,14 +350,15 @@ public class CFGParser implements PsiParser, LightPsiParser {
   public static boolean ImportDefinition(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "ImportDefinition")) return false;
     if (!nextTokenIs(b, IMPORT_DEF)) return false;
-    boolean r;
-    Marker m = enter_section_(b);
+    boolean r, p;
+    Marker m = enter_section_(b, l, _NONE_, IMPORT_DEFINITION, null);
     r = consumeToken(b, IMPORT_DEF);
-    r = r && FullQualifiedRuleOrModuleName(b, l + 1);
-    r = r && ImportDefinition_2(b, l + 1);
-    r = r && consumeToken(b, DEFINITION_END);
-    exit_section_(b, m, IMPORT_DEFINITION, r);
-    return r;
+    p = r; // pin = 1
+    r = r && report_error_(b, FullQualifiedRuleOrModuleName(b, l + 1));
+    r = p && report_error_(b, ImportDefinition_2(b, l + 1)) && r;
+    r = p && consumeToken(b, DEFINITION_END) && r;
+    exit_section_(b, l, m, r, p, null);
+    return r || p;
   }
 
   // [ALIAS_OP FullQualifiedRuleOrModuleName]
@@ -382,12 +384,13 @@ public class CFGParser implements PsiParser, LightPsiParser {
   public static boolean Max(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Max")) return false;
     if (!nextTokenIs(b, REP_MAX_OPEN)) return false;
-    boolean r;
-    Marker m = enter_section_(b);
+    boolean r, p;
+    Marker m = enter_section_(b, l, _NONE_, MAX, null);
     r = consumeToken(b, REP_MAX_OPEN);
+    p = r; // pin = 1
     r = r && MaxValue(b, l + 1);
-    exit_section_(b, m, MAX, r);
-    return r;
+    exit_section_(b, l, m, r, p, null);
+    return r || p;
   }
 
   /* ********************************************************** */
@@ -411,7 +414,7 @@ public class CFGParser implements PsiParser, LightPsiParser {
     if (!nextTokenIs(b, NATURAL_NUMBER)) return false;
     boolean r;
     Marker m = enter_section_(b);
-    r = consumeTokens(b, 0, NATURAL_NUMBER, REP_MIN_CLOSE);
+    r = consumeTokens(b, 2, NATURAL_NUMBER, REP_MIN_CLOSE);
     exit_section_(b, m, MIN, r);
     return r;
   }
@@ -421,13 +424,14 @@ public class CFGParser implements PsiParser, LightPsiParser {
   public static boolean ModuleDefinition(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "ModuleDefinition")) return false;
     if (!nextTokenIs(b, MODULE_DEF)) return false;
-    boolean r;
-    Marker m = enter_section_(b);
+    boolean r, p;
+    Marker m = enter_section_(b, l, _NONE_, MODULE_DEFINITION, null);
     r = consumeToken(b, MODULE_DEF);
-    r = r && FullQualifiedRuleOrModuleName(b, l + 1);
-    r = r && consumeToken(b, DEFINITION_END);
-    exit_section_(b, m, MODULE_DEFINITION, r);
-    return r;
+    p = r; // pin = 1
+    r = r && report_error_(b, FullQualifiedRuleOrModuleName(b, l + 1));
+    r = p && consumeToken(b, DEFINITION_END) && r;
+    exit_section_(b, l, m, r, p, null);
+    return r || p;
   }
 
   /* ********************************************************** */
@@ -435,13 +439,14 @@ public class CFGParser implements PsiParser, LightPsiParser {
   public static boolean Optional(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Optional")) return false;
     if (!nextTokenIs(b, OPT_OPEN)) return false;
-    boolean r;
-    Marker m = enter_section_(b);
+    boolean r, p;
+    Marker m = enter_section_(b, l, _NONE_, OPTIONAL, null);
     r = consumeToken(b, OPT_OPEN);
-    r = r && Expression(b, l + 1);
-    r = r && consumeToken(b, OPT_CLOSE);
-    exit_section_(b, m, OPTIONAL, r);
-    return r;
+    p = r; // pin = 1
+    r = r && report_error_(b, Expression(b, l + 1));
+    r = p && consumeToken(b, OPT_CLOSE) && r;
+    exit_section_(b, l, m, r, p, null);
+    return r || p;
   }
 
   /* ********************************************************** */
@@ -482,53 +487,33 @@ public class CFGParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // NAME RUL_OP Expression DEFINITION_END
+  // ID RUL_OP Expression DEFINITION_END
   public static boolean RuleDefinition(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "RuleDefinition")) return false;
-    if (!nextTokenIs(b, NAME)) return false;
-    boolean r;
-    Marker m = enter_section_(b);
-    r = consumeTokens(b, 0, NAME, RUL_OP);
-    r = r && Expression(b, l + 1);
-    r = r && consumeToken(b, DEFINITION_END);
-    exit_section_(b, m, RULE_DEFINITION, r);
-    return r;
+    if (!nextTokenIs(b, ID)) return false;
+    boolean r, p;
+    Marker m = enter_section_(b, l, _NONE_, RULE_DEFINITION, null);
+    r = consumeTokens(b, 2, ID, RUL_OP);
+    p = r; // pin = 2
+    r = r && report_error_(b, Expression(b, l + 1));
+    r = p && consumeToken(b, DEFINITION_END) && r;
+    exit_section_(b, l, m, r, p, null);
+    return r || p;
   }
 
   /* ********************************************************** */
-  // SEQ_OP RangeX Sequence
-  //            |
-  //            
-  public static boolean Sequence(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "Sequence")) return false;
-    boolean r;
-    Marker m = enter_section_(b, l, _NONE_, SEQUENCE, "<sequence>");
-    r = Sequence_0(b, l + 1);
-    if (!r) r = consumeToken(b, SEQUENCE_1_0);
-    exit_section_(b, l, m, r, false, null);
-    return r;
-  }
-
-  // SEQ_OP RangeX Sequence
-  private static boolean Sequence_0(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "Sequence_0")) return false;
-    boolean r;
-    Marker m = enter_section_(b);
-    r = consumeToken(b, SEQ_OP);
-    r = r && RangeX(b, l + 1);
-    r = r && Sequence(b, l + 1);
-    exit_section_(b, m, null, r);
-    return r;
-  }
-
-  /* ********************************************************** */
-  // RangeX Sequence
+  // RangeX+
   public static boolean SequenceX(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "SequenceX")) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, SEQUENCE_X, "<sequence x>");
     r = RangeX(b, l + 1);
-    r = r && Sequence(b, l + 1);
+    int c = current_position_(b);
+    while (r) {
+      if (!RangeX(b, l + 1)) break;
+      if (!empty_element_parsed_guard_(b, "SequenceX", c)) break;
+      c = current_position_(b);
+    }
     exit_section_(b, l, m, r, false, null);
     return r;
   }

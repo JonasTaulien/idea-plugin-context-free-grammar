@@ -8,9 +8,6 @@ import com.intellij.psi.PsiElement;
 public interface CFGSequenceX extends PsiElement {
 
   @NotNull
-  CFGRangeX getRangeX();
-
-  @NotNull
-  CFGSequence getSequence();
+  List<CFGRangeX> getRangeXList();
 
 }

@@ -26,4 +26,16 @@ public class CFGTerminalImpl extends ASTWrapperPsiElement implements CFGTerminal
     else super.accept(visitor);
   }
 
+  @Override
+  @Nullable
+  public PsiElement getString() {
+    return findChildByType(STRING);
+  }
+
+  @Override
+  @Nullable
+  public PsiElement getUnicode() {
+    return findChildByType(UNICODE);
+  }
+
 }

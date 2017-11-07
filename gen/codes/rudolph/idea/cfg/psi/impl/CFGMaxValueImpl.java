@@ -26,4 +26,10 @@ public class CFGMaxValueImpl extends ASTWrapperPsiElement implements CFGMaxValue
     else super.accept(visitor);
   }
 
+  @Override
+  @Nullable
+  public PsiElement getNonZeroNaturalNumber() {
+    return findChildByType(NON_ZERO_NATURAL_NUMBER);
+  }
+
 }

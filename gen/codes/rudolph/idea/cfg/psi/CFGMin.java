@@ -7,4 +7,7 @@ import com.intellij.psi.PsiElement;
 
 public interface CFGMin extends PsiElement {
 
+  @NotNull
+  PsiElement getNaturalNumber();
+
 }

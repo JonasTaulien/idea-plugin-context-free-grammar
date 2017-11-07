@@ -22,72 +22,48 @@ import static codes.rudolph.idea.cfg.psi.CFGTypes.*;
 %type IElementType
 %unicode
 
-COMMENT="#"[^\r\n]*
+EOL=\R
+WHITE_SPACE=\s+
 
-RUL_OP=":"
-SUB_MODULE_OP=[.]
-RNG_OP="-"
-ALT_OP="|"
-EXC_OP="/"
-SEQ_OP=\s+
-
-GR_OPEN="("
-GR_CLOSE=")"
-
-OPT_OPEN="["
-OPT_CLOSE="]"
-
-REP_OPEN="{"
-REP_CLOSE="}"
-REP_MIN_CLOSE=">"
-REP_MAX_OPEN="<"
-REP_DELIM="$"
-INFINITE="*"
-DEFINITION_END=";"
-
-UNICODE="\\u"[0-9A-Fa-f]{4}
+COMMENT=#[^\r\n]*
+UNICODE=\\u[0-9A-Fa-f]{4}
 STRING=('([^'\\]|\\.)*'|\"([^\"\\]|\\.)*\")
 NATURAL_NUMBER=(0|[1-9][0-9]*)
 NON_ZERO_NATURAL_NUMBER=[1-9][0-9]*
-NAME=[A-Za-z_][A-Za-z_0-9]*
-
-WHITE_SPACE=\s+
-
-MODULE_DEF="module"
-IMPORT_DEF="import"
-ALIAS_OP="as"
+ID=[A-Za-z_][A-Za-z_0-9]*
 
 %state NON_ZERO_NATURAL_NUMBER_IS_FOLLOWING
 %%
 <YYINITIAL> {
-  {WHITE_SPACE}                { return WHITE_SPACE; }
+  {WHITE_SPACE}                  { return WHITE_SPACE; }
 
-  {COMMENT}                    { return COMMENT; }
-  {MODULE_DEF}                 { return MODULE_DEF; }
-  {DEFINITION_END}             { return DEFINITION_END; }
-  {IMPORT_DEF}                 { return IMPORT_DEF; }
-  {ALIAS_OP}                   { return ALIAS_OP; }
-  {NAME}                       { return NAME; }
-  {RUL_OP}                     { return RUL_OP; }
-  {SUB_MODULE_OP}              { return SUB_MODULE_OP; }
-  {EXC_OP}                     { return EXC_OP; }
-  {SEQ_OP}                     { return SEQ_OP; }
-  {ALT_OP}                     { return ALT_OP; }
-  {RNG_OP}                     { return RNG_OP; }
-  {STRING}                     { return STRING; }
-  {UNICODE}                    { return UNICODE; }
-  {OPT_OPEN}                   { return OPT_OPEN; }
-  {OPT_CLOSE}                  { return OPT_CLOSE; }
-  {REP_OPEN}                   { return REP_OPEN; }
-  {REP_CLOSE}                  { return REP_CLOSE; }
-  {NATURAL_NUMBER}             { return NATURAL_NUMBER; }
-  {REP_MIN_CLOSE}              { return REP_MIN_CLOSE; }
-  {REP_DELIM}                  { return REP_DELIM; }
-  {REP_MAX_OPEN}               { yybegin(NON_ZERO_NATURAL_NUMBER_IS_FOLLOWING); return REP_MAX_OPEN; }
-  {INFINITE}                   { return INFINITE; }
-  {GR_OPEN}                    { return GR_OPEN; }
-  {GR_CLOSE}                   { return GR_CLOSE; }
+  "module"                       { return MODULE_DEF; }
+  "import"                       { return IMPORT_DEF; }
+  "as"                           { return ALIAS_OP; }
+  ":"                            { return RUL_OP; }
+  "."                            { return SUB_MODULE_OP; }
+  "-"                            { return RNG_OP; }
+  "|"                            { return ALT_OP; }
+  "/"                            { return EXC_OP; }
+  "("                            { return GR_OPEN; }
+  ")"                            { return GR_CLOSE; }
+  "["                            { return OPT_OPEN; }
+  "]"                            { return OPT_CLOSE; }
+  "{"                            { return REP_OPEN; }
+  "}"                            { return REP_CLOSE; }
+  ">"                            { return REP_MIN_CLOSE; }
+  "<"                            { yybegin(NON_ZERO_NATURAL_NUMBER_IS_FOLLOWING); return REP_MAX_OPEN; }
+  "$"                            { return REP_DELIM; }
+  "*"                            { return INFINITE; }
+  ";"                            { return DEFINITION_END; }
+
+  {COMMENT}                      { return COMMENT; }
+  {UNICODE}                      { return UNICODE; }
+  {STRING}                       { return STRING; }
+  {NATURAL_NUMBER}               { return NATURAL_NUMBER; }
+  {ID}                           { return ID; }
 }
+
 
 <NON_ZERO_NATURAL_NUMBER_IS_FOLLOWING> {
   {NON_ZERO_NATURAL_NUMBER}    { yybegin(YYINITIAL); return NON_ZERO_NATURAL_NUMBER; }

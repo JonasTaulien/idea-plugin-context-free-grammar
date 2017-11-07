@@ -7,4 +7,7 @@ import com.intellij.psi.PsiElement;
 
 public interface CFGMaxValue extends PsiElement {
 
+  @Nullable
+  PsiElement getNonZeroNaturalNumber();
+
 }

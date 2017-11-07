@@ -75,10 +75,6 @@ public class CFGVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
-  public void visitSequence(@NotNull CFGSequence o) {
-    visitPsiElement(o);
-  }
-
   public void visitSequenceX(@NotNull CFGSequenceX o) {
     visitPsiElement(o);
   }

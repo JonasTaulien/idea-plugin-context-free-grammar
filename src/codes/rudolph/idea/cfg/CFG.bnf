@@ -11,13 +11,49 @@
   elementTypeHolderClass="codes.rudolph.idea.cfg.psi.CFGTypes"
   elementTypeClass="codes.rudolph.idea.cfg.psi.CFGElementType"
   tokenTypeClass="codes.rudolph.idea.cfg.psi.CFGTokenType"
+  
+  tokens = [
+      MODULE_DEF="module"
+      IMPORT_DEF="import"
+      ALIAS_OP="as"
+      
+      COMMENT="regexp:#[^\r\n]*"
+      
+      RUL_OP=":"
+      SUB_MODULE_OP="."
+      RNG_OP="-"
+      ALT_OP="|"
+      EXC_OP="/"
+      
+      GR_OPEN="("
+      GR_CLOSE=")"
+      
+      OPT_OPEN="["
+      OPT_CLOSE="]"
+      
+      REP_OPEN="{"
+      REP_CLOSE="}"
+      REP_MIN_CLOSE=">"
+      REP_MAX_OPEN="<"
+      REP_DELIM="$"
+      INFINITE="*"
+      DEFINITION_END=";"
+      
+      UNICODE="regexp:\\u[0-9A-Fa-f]{4}"
+      STRING="regexp:('([^'\\]|\\.)*'|\"([^\"\\]|\\.)*\")"
+      NATURAL_NUMBER="regexp:(0|[1-9][0-9]*)"
+      NON_ZERO_NATURAL_NUMBER="regexp:[1-9][0-9]*"
+      ID='regexp:[A-Za-z_][A-Za-z_0-9]*'
+
+      space='regexp:\s+'
+  ]
 }
 
 ContextFreeGrammar ::= COMMENT* ModuleDefinition (ImportDefinition | COMMENT)* (RuleDefinition | COMMENT)*
 
-ModuleDefinition ::= MODULE_DEF FullQualifiedRuleOrModuleName DEFINITION_END
-ImportDefinition ::= IMPORT_DEF FullQualifiedRuleOrModuleName [ALIAS_OP FullQualifiedRuleOrModuleName] DEFINITION_END
-RuleDefinition ::= NAME RUL_OP Expression DEFINITION_END
+ModuleDefinition ::= MODULE_DEF FullQualifiedRuleOrModuleName DEFINITION_END {pin=1}
+ImportDefinition ::= IMPORT_DEF FullQualifiedRuleOrModuleName [ALIAS_OP FullQualifiedRuleOrModuleName] DEFINITION_END {pin=1}
+RuleDefinition ::= ID RUL_OP Expression DEFINITION_END {pin=2}
 
 // Binary Recursive Operators: From least to most binding:
 // - Exclusion: A / B
@@ -40,19 +76,18 @@ RuleDefinition ::= NAME RUL_OP Expression DEFINITION_END
 // - A / B - C <=> A / (B - C)
 
 //Source: http://www.fh-wedel.de/~si/vorlesungen/cb/Beispiele/parser/expr/expr.html
-Expression ::= AlternativeX Exclusion
+Expression ::= AlternativeX Exclusion {pin=2}
 Exclusion ::= EXC_OP AlternativeX Exclusion
             |
 
-AlternativeX ::= SequenceX Alternative
+AlternativeX ::= SequenceX Alternative {pin=2}
 Alternative ::= ALT_OP SequenceX Alternative
               |
+              {pin=1}
               
-SequenceX ::= RangeX Sequence
-Sequence ::= SEQ_OP RangeX Sequence
-           |
+SequenceX ::= RangeX+
            
-RangeX ::= Unary Range
+RangeX ::= Unary Range {pin=2}
 Range ::= RNG_OP Unary Range
         |
 
@@ -65,16 +100,16 @@ Unary ::= Terminal
 Terminal ::= STRING
            | UNICODE
 
-FullQualifiedRuleOrModuleName ::= NAME (SUB_MODULE_OP NAME)*
+FullQualifiedRuleOrModuleName ::= ID (SUB_MODULE_OP ID)* {pin=1}
 
-Optional ::= OPT_OPEN Expression OPT_CLOSE
+Optional ::= OPT_OPEN Expression OPT_CLOSE {pin=1}
 
-DelimitedRepetition ::= REP_OPEN [Min] Expression [Delimiter] [Max] REP_CLOSE
-Min ::= NATURAL_NUMBER REP_MIN_CLOSE
-Delimiter ::= REP_DELIM Expression
+DelimitedRepetition ::= REP_OPEN [Min] Expression [Delimiter] [Max] REP_CLOSE {pin=1}
+Min ::= NATURAL_NUMBER REP_MIN_CLOSE {pin=2}
+Delimiter ::= REP_DELIM Expression {pin=1}
 
-Max ::= REP_MAX_OPEN MaxValue
+Max ::= REP_MAX_OPEN MaxValue {pin=1}
 MaxValue ::= NON_ZERO_NATURAL_NUMBER 
            | INFINITE
 
-Group ::= GR_OPEN Expression GR_CLOSE
+Group ::= GR_OPEN Expression GR_CLOSE {pin=1}

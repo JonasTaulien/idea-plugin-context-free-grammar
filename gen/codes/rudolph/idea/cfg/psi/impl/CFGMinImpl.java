@@ -26,4 +26,10 @@ public class CFGMinImpl extends ASTWrapperPsiElement implements CFGMin {
     else super.accept(visitor);
   }
 
+  @Override
+  @NotNull
+  public PsiElement getNaturalNumber() {
+    return findNotNullChildByType(NATURAL_NUMBER);
+  }
+
 }

@@ -7,7 +7,7 @@ import com.intellij.psi.PsiElement;
 
 public interface CFGModuleDefinition extends PsiElement {
 
-  @NotNull
+  @Nullable
   CFGFullQualifiedRuleOrModuleName getFullQualifiedRuleOrModuleName();
 
 }

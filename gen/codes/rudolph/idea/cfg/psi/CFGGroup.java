@@ -7,7 +7,7 @@ import com.intellij.psi.PsiElement;
 
 public interface CFGGroup extends PsiElement {
 
-  @NotNull
+  @Nullable
   CFGExpression getExpression();
 
 }

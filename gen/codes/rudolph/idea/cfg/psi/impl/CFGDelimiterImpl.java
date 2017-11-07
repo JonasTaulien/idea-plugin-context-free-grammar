@@ -27,9 +27,9 @@ public class CFGDelimiterImpl extends ASTWrapperPsiElement implements CFGDelimit
   }
 
   @Override
-  @NotNull
+  @Nullable
   public CFGExpression getExpression() {
-    return findNotNullChildByClass(CFGExpression.class);
+    return findChildByClass(CFGExpression.class);
   }
 
 }
