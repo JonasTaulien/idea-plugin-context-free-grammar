@@ -10,7 +10,7 @@ import com.intellij.psi.util.PsiTreeUtil;
 import static codes.rudolph.idea.cfg.psi.CFGTypes.*;
 import codes.rudolph.idea.cfg.psi.*;
 
-public class CFGTerminalImpl extends CFGExpressionImpl implements CFGTerminal {
+public abstract class CFGTerminalImpl extends CFGUnaryImpl implements CFGTerminal {
 
   public CFGTerminalImpl(ASTNode node) {
     super(node);
@@ -23,18 +23,6 @@ public class CFGTerminalImpl extends CFGExpressionImpl implements CFGTerminal {
   public void accept(@NotNull PsiElementVisitor visitor) {
     if (visitor instanceof CFGVisitor) accept((CFGVisitor)visitor);
     else super.accept(visitor);
-  }
-
-  @Override
-  @Nullable
-  public PsiElement getString() {
-    return findChildByType(STRING);
-  }
-
-  @Override
-  @Nullable
-  public PsiElement getUnicode() {
-    return findChildByType(UNICODE);
   }
 
 }

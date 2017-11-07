@@ -10,7 +10,7 @@ import com.intellij.psi.util.PsiTreeUtil;
 import static codes.rudolph.idea.cfg.psi.CFGTypes.*;
 import codes.rudolph.idea.cfg.psi.*;
 
-public class CFGGroupImpl extends CFGExpressionImpl implements CFGGroup {
+public class CFGGroupImpl extends CFGUnaryImpl implements CFGGroup {
 
   public CFGGroupImpl(ASTNode node) {
     super(node);
@@ -26,9 +26,9 @@ public class CFGGroupImpl extends CFGExpressionImpl implements CFGGroup {
   }
 
   @Override
-  @NotNull
+  @Nullable
   public CFGExpression getExpression() {
-    return findNotNullChildByClass(CFGExpression.class);
+    return findChildByClass(CFGExpression.class);
   }
 
 }

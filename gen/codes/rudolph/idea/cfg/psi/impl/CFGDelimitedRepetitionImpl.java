@@ -10,7 +10,7 @@ import com.intellij.psi.util.PsiTreeUtil;
 import static codes.rudolph.idea.cfg.psi.CFGTypes.*;
 import codes.rudolph.idea.cfg.psi.*;
 
-public class CFGDelimitedRepetitionImpl extends CFGExpressionImpl implements CFGDelimitedRepetition {
+public class CFGDelimitedRepetitionImpl extends CFGUnaryImpl implements CFGDelimitedRepetition {
 
   public CFGDelimitedRepetitionImpl(ASTNode node) {
     super(node);
@@ -32,9 +32,9 @@ public class CFGDelimitedRepetitionImpl extends CFGExpressionImpl implements CFG
   }
 
   @Override
-  @NotNull
+  @Nullable
   public CFGExpression getExpression() {
-    return findNotNullChildByClass(CFGExpression.class);
+    return findChildByClass(CFGExpression.class);
   }
 
   @Override

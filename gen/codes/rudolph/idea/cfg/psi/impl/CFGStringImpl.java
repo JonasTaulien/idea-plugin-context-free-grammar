@@ -10,19 +10,25 @@ import com.intellij.psi.util.PsiTreeUtil;
 import static codes.rudolph.idea.cfg.psi.CFGTypes.*;
 import codes.rudolph.idea.cfg.psi.*;
 
-public class CFGFullQualifiedRuleOrModuleNameImpl extends CFGUnaryImpl implements CFGFullQualifiedRuleOrModuleName {
+public class CFGStringImpl extends CFGTerminalImpl implements CFGString {
 
-  public CFGFullQualifiedRuleOrModuleNameImpl(ASTNode node) {
+  public CFGStringImpl(ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull CFGVisitor visitor) {
-    visitor.visitFullQualifiedRuleOrModuleName(this);
+    visitor.visitString(this);
   }
 
   public void accept(@NotNull PsiElementVisitor visitor) {
     if (visitor instanceof CFGVisitor) accept((CFGVisitor)visitor);
     else super.accept(visitor);
+  }
+
+  @Override
+  @NotNull
+  public PsiElement getStringTok() {
+    return findNotNullChildByType(STRING_TOK);
   }
 
 }

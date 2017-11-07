@@ -27,8 +27,8 @@ public class CFGRangeImpl extends CFGExpressionImpl implements CFGRange {
 
   @Override
   @NotNull
-  public List<CFGExpression> getExpressionList() {
-    return PsiTreeUtil.getChildrenOfTypeAsList(this, CFGExpression.class);
+  public List<CFGUnary> getUnaryList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, CFGUnary.class);
   }
 
 }

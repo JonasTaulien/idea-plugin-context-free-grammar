@@ -25,13 +25,13 @@ import static codes.rudolph.idea.cfg.psi.CFGTypes.*;
 WHITE_SPACE=\s+
 
 COMMENT=#[^\r\n]*
-UNICODE=\\u[0-9A-Fa-f]{4}
-STRING=('([^'\\]|\\.)*'|\"([^\"\\]|\\.)*\")
+UNICODE_TOK=\\u[0-9A-Fa-f]{4}
+STRING_TOK=('([^'\\]|\\.)*'|\"([^\"\\]|\\.)*\")
 NATURAL_NUMBER=(0|[1-9][0-9]*)
 NON_ZERO_NATURAL_NUMBER=[1-9][0-9]*
 ID=[A-Za-z_][A-Za-z_0-9]*
 
-%state NON_ZERO_NATURAL_NUMBER_IS_FOLLOWING
+%state MAX_VALUE
 %%
 <YYINITIAL> {
   {WHITE_SPACE}                  { return WHITE_SPACE; }
@@ -51,21 +51,23 @@ ID=[A-Za-z_][A-Za-z_0-9]*
   "{"                            { return REP_OPEN; }
   "}"                            { return REP_CLOSE; }
   ">"                            { return REP_MIN_CLOSE; }
-  "<"                            { yybegin(NON_ZERO_NATURAL_NUMBER_IS_FOLLOWING); return REP_MAX_OPEN; }
+  "<"                            { yybegin(MAX_VALUE); return REP_MAX_OPEN; }
   "$"                            { return REP_DELIM; }
-  "*"                            { return INFINITE; }
   ";"                            { return DEFINITION_END; }
 
   {COMMENT}                      { return COMMENT; }
-  {UNICODE}                      { return UNICODE; }
-  {STRING}                       { return STRING; }
+  {UNICODE_TOK}                  { return UNICODE_TOK; }
+  {STRING_TOK}                   { return STRING_TOK; }
   {NATURAL_NUMBER}               { return NATURAL_NUMBER; }
   {ID}                           { return ID; }
 }
 
 
-<NON_ZERO_NATURAL_NUMBER_IS_FOLLOWING> {
+<MAX_VALUE> {
+  {WHITE_SPACE}                  { return WHITE_SPACE; }
+  
   {NON_ZERO_NATURAL_NUMBER}    { yybegin(YYINITIAL); return NON_ZERO_NATURAL_NUMBER; }
+  "*"                          { yybegin(YYINITIAL); return INFINITE; }
 }
 
 [^] { return BAD_CHARACTER; }

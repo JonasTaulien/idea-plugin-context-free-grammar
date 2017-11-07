@@ -5,9 +5,9 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface CFGGroup extends CFGExpression {
+public interface CFGGroup extends CFGUnary {
 
-  @NotNull
+  @Nullable
   CFGExpression getExpression();
 
 }

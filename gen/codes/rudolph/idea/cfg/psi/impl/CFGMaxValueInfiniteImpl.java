@@ -10,14 +10,14 @@ import com.intellij.psi.util.PsiTreeUtil;
 import static codes.rudolph.idea.cfg.psi.CFGTypes.*;
 import codes.rudolph.idea.cfg.psi.*;
 
-public class CFGFullQualifiedRuleOrModuleNameImpl extends CFGUnaryImpl implements CFGFullQualifiedRuleOrModuleName {
+public class CFGMaxValueInfiniteImpl extends CFGMaxValueImpl implements CFGMaxValueInfinite {
 
-  public CFGFullQualifiedRuleOrModuleNameImpl(ASTNode node) {
+  public CFGMaxValueInfiniteImpl(ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull CFGVisitor visitor) {
-    visitor.visitFullQualifiedRuleOrModuleName(this);
+    visitor.visitMaxValueInfinite(this);
   }
 
   public void accept(@NotNull PsiElementVisitor visitor) {

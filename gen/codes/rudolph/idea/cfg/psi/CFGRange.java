@@ -8,6 +8,6 @@ import com.intellij.psi.PsiElement;
 public interface CFGRange extends CFGExpression {
 
   @NotNull
-  List<CFGExpression> getExpressionList();
+  List<CFGUnary> getUnaryList();
 
 }

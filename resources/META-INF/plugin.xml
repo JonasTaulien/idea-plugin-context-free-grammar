@@ -26,6 +26,7 @@
   <extensions defaultExtensionNs="com.intellij">
       <fileTypeFactory implementation="codes.rudolph.idea.cfg.CFGFileTypeFactory"/>
       <lang.parserDefinition language="CFGLanguage" implementationClass="codes.rudolph.idea.cfg.CFGParserDefinition"/>
+      <lang.syntaxHighlighterFactory language="CFGLanguage" implementationClass="codes.rudolph.idea.cfg.CFGSyntaxHighlighterFactory"/>
   </extensions>
 
   <actions>

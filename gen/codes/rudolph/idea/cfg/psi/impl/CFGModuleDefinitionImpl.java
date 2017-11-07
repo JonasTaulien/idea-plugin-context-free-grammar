@@ -27,9 +27,9 @@ public class CFGModuleDefinitionImpl extends ASTWrapperPsiElement implements CFG
   }
 
   @Override
-  @NotNull
+  @Nullable
   public CFGFullQualifiedRuleOrModuleName getFullQualifiedRuleOrModuleName() {
-    return findNotNullChildByClass(CFGFullQualifiedRuleOrModuleName.class);
+    return findChildByClass(CFGFullQualifiedRuleOrModuleName.class);
   }
 
 }

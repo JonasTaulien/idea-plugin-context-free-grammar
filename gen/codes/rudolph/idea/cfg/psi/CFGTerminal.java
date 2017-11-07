@@ -5,12 +5,6 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface CFGTerminal extends CFGExpression {
-
-  @Nullable
-  PsiElement getString();
-
-  @Nullable
-  PsiElement getUnicode();
+public interface CFGTerminal extends CFGUnary {
 
 }

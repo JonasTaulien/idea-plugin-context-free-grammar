@@ -18,14 +18,18 @@ public interface CFGTypes {
   IElementType IMPORT_DEFINITION = new CFGElementType("IMPORT_DEFINITION");
   IElementType MAX = new CFGElementType("MAX");
   IElementType MAX_VALUE = new CFGElementType("MAX_VALUE");
+  IElementType MAX_VALUE_INFINITE = new CFGElementType("MAX_VALUE_INFINITE");
+  IElementType MAX_VALUE_NUMBER = new CFGElementType("MAX_VALUE_NUMBER");
   IElementType MIN = new CFGElementType("MIN");
   IElementType MODULE_DEFINITION = new CFGElementType("MODULE_DEFINITION");
   IElementType OPTIONAL = new CFGElementType("OPTIONAL");
   IElementType RANGE = new CFGElementType("RANGE");
   IElementType RULE_DEFINITION = new CFGElementType("RULE_DEFINITION");
   IElementType SEQUENCE = new CFGElementType("SEQUENCE");
+  IElementType STRING = new CFGElementType("STRING_TOK");
   IElementType TERMINAL = new CFGElementType("TERMINAL");
   IElementType UNARY = new CFGElementType("UNARY");
+  IElementType UNICODE = new CFGElementType("UNICODE_TOK");
 
   IElementType ALIAS_OP = new CFGTokenType("as");
   IElementType ALT_OP = new CFGTokenType("|");
@@ -49,9 +53,9 @@ public interface CFGTypes {
   IElementType REP_OPEN = new CFGTokenType("{");
   IElementType RNG_OP = new CFGTokenType("-");
   IElementType RUL_OP = new CFGTokenType(":");
-  IElementType STRING = new CFGTokenType("STRING");
+  IElementType STRING_TOK = new CFGTokenType("STRING_TOK");
   IElementType SUB_MODULE_OP = new CFGTokenType(".");
-  IElementType UNICODE = new CFGTokenType("UNICODE");
+  IElementType UNICODE_TOK = new CFGTokenType("UNICODE_TOK");
 
   class Factory {
     public static PsiElement createElement(ASTNode node) {
@@ -80,8 +84,11 @@ public interface CFGTypes {
       else if (type == MAX) {
         return new CFGMaxImpl(node);
       }
-      else if (type == MAX_VALUE) {
-        return new CFGMaxValueImpl(node);
+      else if (type == MAX_VALUE_INFINITE) {
+        return new CFGMaxValueInfiniteImpl(node);
+      }
+      else if (type == MAX_VALUE_NUMBER) {
+        return new CFGMaxValueNumberImpl(node);
       }
       else if (type == MIN) {
         return new CFGMinImpl(node);
@@ -101,8 +108,11 @@ public interface CFGTypes {
       else if (type == SEQUENCE) {
         return new CFGSequenceImpl(node);
       }
-      else if (type == TERMINAL) {
-        return new CFGTerminalImpl(node);
+      else if (type == STRING) {
+        return new CFGStringImpl(node);
+      }
+      else if (type == UNICODE) {
+        return new CFGUnicodeImpl(node);
       }
       throw new AssertionError("Unknown element type: " + type);
     }

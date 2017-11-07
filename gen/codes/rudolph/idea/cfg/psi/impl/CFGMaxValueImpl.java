@@ -11,7 +11,7 @@ import static codes.rudolph.idea.cfg.psi.CFGTypes.*;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import codes.rudolph.idea.cfg.psi.*;
 
-public class CFGMaxValueImpl extends ASTWrapperPsiElement implements CFGMaxValue {
+public abstract class CFGMaxValueImpl extends ASTWrapperPsiElement implements CFGMaxValue {
 
   public CFGMaxValueImpl(ASTNode node) {
     super(node);
@@ -24,12 +24,6 @@ public class CFGMaxValueImpl extends ASTWrapperPsiElement implements CFGMaxValue
   public void accept(@NotNull PsiElementVisitor visitor) {
     if (visitor instanceof CFGVisitor) accept((CFGVisitor)visitor);
     else super.accept(visitor);
-  }
-
-  @Override
-  @Nullable
-  public PsiElement getNonZeroNaturalNumber() {
-    return findChildByType(NON_ZERO_NATURAL_NUMBER);
   }
 
 }

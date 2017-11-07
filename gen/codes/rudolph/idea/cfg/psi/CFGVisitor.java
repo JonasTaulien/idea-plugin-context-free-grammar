@@ -12,7 +12,7 @@ public class CFGVisitor extends PsiElementVisitor {
   }
 
   public void visitDelimitedRepetition(@NotNull CFGDelimitedRepetition o) {
-    visitExpression(o);
+    visitUnary(o);
   }
 
   public void visitDelimiter(@NotNull CFGDelimiter o) {
@@ -28,11 +28,11 @@ public class CFGVisitor extends PsiElementVisitor {
   }
 
   public void visitFullQualifiedRuleOrModuleName(@NotNull CFGFullQualifiedRuleOrModuleName o) {
-    visitExpression(o);
+    visitUnary(o);
   }
 
   public void visitGroup(@NotNull CFGGroup o) {
-    visitExpression(o);
+    visitUnary(o);
   }
 
   public void visitImportDefinition(@NotNull CFGImportDefinition o) {
@@ -47,6 +47,14 @@ public class CFGVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitMaxValueInfinite(@NotNull CFGMaxValueInfinite o) {
+    visitMaxValue(o);
+  }
+
+  public void visitMaxValueNumber(@NotNull CFGMaxValueNumber o) {
+    visitMaxValue(o);
+  }
+
   public void visitMin(@NotNull CFGMin o) {
     visitPsiElement(o);
   }
@@ -56,7 +64,7 @@ public class CFGVisitor extends PsiElementVisitor {
   }
 
   public void visitOptional(@NotNull CFGOptional o) {
-    visitExpression(o);
+    visitUnary(o);
   }
 
   public void visitRange(@NotNull CFGRange o) {
@@ -71,12 +79,20 @@ public class CFGVisitor extends PsiElementVisitor {
     visitExpression(o);
   }
 
+  public void visitString(@NotNull CFGString o) {
+    visitTerminal(o);
+  }
+
   public void visitTerminal(@NotNull CFGTerminal o) {
-    visitExpression(o);
+    visitUnary(o);
   }
 
   public void visitUnary(@NotNull CFGUnary o) {
     visitExpression(o);
+  }
+
+  public void visitUnicode(@NotNull CFGUnicode o) {
+    visitTerminal(o);
   }
 
   public void visitPsiElement(@NotNull PsiElement o) {

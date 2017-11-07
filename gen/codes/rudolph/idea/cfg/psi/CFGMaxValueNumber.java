@@ -5,6 +5,9 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface CFGFullQualifiedRuleOrModuleName extends CFGUnary {
+public interface CFGMaxValueNumber extends CFGMaxValue {
+
+  @NotNull
+  PsiElement getNonZeroNaturalNumber();
 
 }
