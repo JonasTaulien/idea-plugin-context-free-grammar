@@ -27,6 +27,7 @@
       <fileTypeFactory implementation="codes.rudolph.idea.cfg.CFGFileTypeFactory"/>
       <lang.parserDefinition language="CFGLanguage" implementationClass="codes.rudolph.idea.cfg.CFGParserDefinition"/>
       <lang.syntaxHighlighterFactory language="CFGLanguage" implementationClass="codes.rudolph.idea.cfg.CFGSyntaxHighlighterFactory"/>
+      <colorSettingsPage implementation="codes.rudolph.idea.cfg.CFGColorSettingsPage"/>
   </extensions>
 
   <actions>
