@@ -27,9 +27,9 @@ public class CFGMaxImpl extends ASTWrapperPsiElement implements CFGMax {
   }
 
   @Override
-  @Nullable
+  @NotNull
   public CFGMaxValue getMaxValue() {
-    return findChildByClass(CFGMaxValue.class);
+    return findNotNullChildByClass(CFGMaxValue.class);
   }
 
 }

@@ -5,12 +5,12 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface CFGDelimitedRepetition extends PsiElement {
+public interface CFGDelimitedRepetition extends CFGExpression {
 
   @Nullable
   CFGDelimiter getDelimiter();
 
-  @Nullable
+  @NotNull
   CFGExpression getExpression();
 
   @Nullable

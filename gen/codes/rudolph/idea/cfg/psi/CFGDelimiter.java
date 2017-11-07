@@ -7,7 +7,7 @@ import com.intellij.psi.PsiElement;
 
 public interface CFGDelimiter extends PsiElement {
 
-  @Nullable
+  @NotNull
   CFGExpression getExpression();
 
 }

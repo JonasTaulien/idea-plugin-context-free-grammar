@@ -8,10 +8,9 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.util.PsiTreeUtil;
 import static codes.rudolph.idea.cfg.psi.CFGTypes.*;
-import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import codes.rudolph.idea.cfg.psi.*;
 
-public class CFGAlternativeImpl extends ASTWrapperPsiElement implements CFGAlternative {
+public class CFGAlternativeImpl extends CFGExpressionImpl implements CFGAlternative {
 
   public CFGAlternativeImpl(ASTNode node) {
     super(node);
@@ -27,15 +26,9 @@ public class CFGAlternativeImpl extends ASTWrapperPsiElement implements CFGAlter
   }
 
   @Override
-  @Nullable
-  public CFGAlternative getAlternative() {
-    return findChildByClass(CFGAlternative.class);
-  }
-
-  @Override
-  @Nullable
-  public CFGSequenceX getSequenceX() {
-    return findChildByClass(CFGSequenceX.class);
+  @NotNull
+  public List<CFGSequence> getSequenceList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, CFGSequence.class);
   }
 
 }

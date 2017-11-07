@@ -8,10 +8,9 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.util.PsiTreeUtil;
 import static codes.rudolph.idea.cfg.psi.CFGTypes.*;
-import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import codes.rudolph.idea.cfg.psi.*;
 
-public class CFGRangeImpl extends ASTWrapperPsiElement implements CFGRange {
+public class CFGRangeImpl extends CFGExpressionImpl implements CFGRange {
 
   public CFGRangeImpl(ASTNode node) {
     super(node);
@@ -27,15 +26,9 @@ public class CFGRangeImpl extends ASTWrapperPsiElement implements CFGRange {
   }
 
   @Override
-  @Nullable
-  public CFGRange getRange() {
-    return findChildByClass(CFGRange.class);
-  }
-
-  @Override
-  @Nullable
-  public CFGUnary getUnary() {
-    return findChildByClass(CFGUnary.class);
+  @NotNull
+  public List<CFGExpression> getExpressionList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, CFGExpression.class);
   }
 
 }

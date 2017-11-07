@@ -8,15 +8,11 @@ import com.intellij.psi.PsiElement;
 public class CFGVisitor extends PsiElementVisitor {
 
   public void visitAlternative(@NotNull CFGAlternative o) {
-    visitPsiElement(o);
-  }
-
-  public void visitAlternativeX(@NotNull CFGAlternativeX o) {
-    visitPsiElement(o);
+    visitExpression(o);
   }
 
   public void visitDelimitedRepetition(@NotNull CFGDelimitedRepetition o) {
-    visitPsiElement(o);
+    visitExpression(o);
   }
 
   public void visitDelimiter(@NotNull CFGDelimiter o) {
@@ -24,7 +20,7 @@ public class CFGVisitor extends PsiElementVisitor {
   }
 
   public void visitExclusion(@NotNull CFGExclusion o) {
-    visitPsiElement(o);
+    visitExpression(o);
   }
 
   public void visitExpression(@NotNull CFGExpression o) {
@@ -32,11 +28,11 @@ public class CFGVisitor extends PsiElementVisitor {
   }
 
   public void visitFullQualifiedRuleOrModuleName(@NotNull CFGFullQualifiedRuleOrModuleName o) {
-    visitPsiElement(o);
+    visitExpression(o);
   }
 
   public void visitGroup(@NotNull CFGGroup o) {
-    visitPsiElement(o);
+    visitExpression(o);
   }
 
   public void visitImportDefinition(@NotNull CFGImportDefinition o) {
@@ -60,31 +56,27 @@ public class CFGVisitor extends PsiElementVisitor {
   }
 
   public void visitOptional(@NotNull CFGOptional o) {
-    visitPsiElement(o);
+    visitExpression(o);
   }
 
   public void visitRange(@NotNull CFGRange o) {
-    visitPsiElement(o);
-  }
-
-  public void visitRangeX(@NotNull CFGRangeX o) {
-    visitPsiElement(o);
+    visitExpression(o);
   }
 
   public void visitRuleDefinition(@NotNull CFGRuleDefinition o) {
     visitPsiElement(o);
   }
 
-  public void visitSequenceX(@NotNull CFGSequenceX o) {
-    visitPsiElement(o);
+  public void visitSequence(@NotNull CFGSequence o) {
+    visitExpression(o);
   }
 
   public void visitTerminal(@NotNull CFGTerminal o) {
-    visitPsiElement(o);
+    visitExpression(o);
   }
 
   public void visitUnary(@NotNull CFGUnary o) {
-    visitPsiElement(o);
+    visitExpression(o);
   }
 
   public void visitPsiElement(@NotNull PsiElement o) {

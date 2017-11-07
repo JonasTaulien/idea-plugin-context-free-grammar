@@ -8,10 +8,9 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.util.PsiTreeUtil;
 import static codes.rudolph.idea.cfg.psi.CFGTypes.*;
-import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import codes.rudolph.idea.cfg.psi.*;
 
-public class CFGDelimitedRepetitionImpl extends ASTWrapperPsiElement implements CFGDelimitedRepetition {
+public class CFGDelimitedRepetitionImpl extends CFGExpressionImpl implements CFGDelimitedRepetition {
 
   public CFGDelimitedRepetitionImpl(ASTNode node) {
     super(node);
@@ -33,9 +32,9 @@ public class CFGDelimitedRepetitionImpl extends ASTWrapperPsiElement implements 
   }
 
   @Override
-  @Nullable
+  @NotNull
   public CFGExpression getExpression() {
-    return findChildByClass(CFGExpression.class);
+    return findNotNullChildByClass(CFGExpression.class);
   }
 
   @Override

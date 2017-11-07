@@ -27,9 +27,9 @@ public class CFGRuleDefinitionImpl extends ASTWrapperPsiElement implements CFGRu
   }
 
   @Override
-  @Nullable
+  @NotNull
   public CFGExpression getExpression() {
-    return findChildByClass(CFGExpression.class);
+    return findNotNullChildByClass(CFGExpression.class);
   }
 
   @Override

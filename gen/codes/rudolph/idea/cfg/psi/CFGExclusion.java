@@ -5,12 +5,9 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface CFGExclusion extends PsiElement {
+public interface CFGExclusion extends CFGExpression {
 
-  @Nullable
-  CFGAlternativeX getAlternativeX();
-
-  @Nullable
-  CFGExclusion getExclusion();
+  @NotNull
+  List<CFGExpression> getExpressionList();
 
 }

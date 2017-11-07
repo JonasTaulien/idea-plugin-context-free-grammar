@@ -8,10 +8,9 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.util.PsiTreeUtil;
 import static codes.rudolph.idea.cfg.psi.CFGTypes.*;
-import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import codes.rudolph.idea.cfg.psi.*;
 
-public class CFGTerminalImpl extends ASTWrapperPsiElement implements CFGTerminal {
+public class CFGTerminalImpl extends CFGExpressionImpl implements CFGTerminal {
 
   public CFGTerminalImpl(ASTNode node) {
     super(node);

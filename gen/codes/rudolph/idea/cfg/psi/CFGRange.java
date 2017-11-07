@@ -5,12 +5,9 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface CFGRange extends PsiElement {
+public interface CFGRange extends CFGExpression {
 
-  @Nullable
-  CFGRange getRange();
-
-  @Nullable
-  CFGUnary getUnary();
+  @NotNull
+  List<CFGExpression> getExpressionList();
 
 }

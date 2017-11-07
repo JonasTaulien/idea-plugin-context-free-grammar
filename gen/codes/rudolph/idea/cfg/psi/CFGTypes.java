@@ -9,7 +9,6 @@ import codes.rudolph.idea.cfg.psi.impl.*;
 public interface CFGTypes {
 
   IElementType ALTERNATIVE = new CFGElementType("ALTERNATIVE");
-  IElementType ALTERNATIVE_X = new CFGElementType("ALTERNATIVE_X");
   IElementType DELIMITED_REPETITION = new CFGElementType("DELIMITED_REPETITION");
   IElementType DELIMITER = new CFGElementType("DELIMITER");
   IElementType EXCLUSION = new CFGElementType("EXCLUSION");
@@ -23,18 +22,15 @@ public interface CFGTypes {
   IElementType MODULE_DEFINITION = new CFGElementType("MODULE_DEFINITION");
   IElementType OPTIONAL = new CFGElementType("OPTIONAL");
   IElementType RANGE = new CFGElementType("RANGE");
-  IElementType RANGE_X = new CFGElementType("RANGE_X");
   IElementType RULE_DEFINITION = new CFGElementType("RULE_DEFINITION");
-  IElementType SEQUENCE_X = new CFGElementType("SEQUENCE_X");
+  IElementType SEQUENCE = new CFGElementType("SEQUENCE");
   IElementType TERMINAL = new CFGElementType("TERMINAL");
   IElementType UNARY = new CFGElementType("UNARY");
 
   IElementType ALIAS_OP = new CFGTokenType("as");
-  IElementType ALTERNATIVE_1_0 = new CFGTokenType("Alternative_1_0");
   IElementType ALT_OP = new CFGTokenType("|");
   IElementType COMMENT = new CFGTokenType("COMMENT");
   IElementType DEFINITION_END = new CFGTokenType(";");
-  IElementType EXCLUSION_1_0 = new CFGTokenType("Exclusion_1_0");
   IElementType EXC_OP = new CFGTokenType("/");
   IElementType GR_CLOSE = new CFGTokenType(")");
   IElementType GR_OPEN = new CFGTokenType("(");
@@ -46,7 +42,6 @@ public interface CFGTypes {
   IElementType NON_ZERO_NATURAL_NUMBER = new CFGTokenType("NON_ZERO_NATURAL_NUMBER");
   IElementType OPT_CLOSE = new CFGTokenType("]");
   IElementType OPT_OPEN = new CFGTokenType("[");
-  IElementType RANGE_1_0 = new CFGTokenType("Range_1_0");
   IElementType REP_CLOSE = new CFGTokenType("}");
   IElementType REP_DELIM = new CFGTokenType("$");
   IElementType REP_MAX_OPEN = new CFGTokenType("<");
@@ -64,9 +59,6 @@ public interface CFGTypes {
        if (type == ALTERNATIVE) {
         return new CFGAlternativeImpl(node);
       }
-      else if (type == ALTERNATIVE_X) {
-        return new CFGAlternativeXImpl(node);
-      }
       else if (type == DELIMITED_REPETITION) {
         return new CFGDelimitedRepetitionImpl(node);
       }
@@ -75,9 +67,6 @@ public interface CFGTypes {
       }
       else if (type == EXCLUSION) {
         return new CFGExclusionImpl(node);
-      }
-      else if (type == EXPRESSION) {
-        return new CFGExpressionImpl(node);
       }
       else if (type == FULL_QUALIFIED_RULE_OR_MODULE_NAME) {
         return new CFGFullQualifiedRuleOrModuleNameImpl(node);
@@ -106,20 +95,14 @@ public interface CFGTypes {
       else if (type == RANGE) {
         return new CFGRangeImpl(node);
       }
-      else if (type == RANGE_X) {
-        return new CFGRangeXImpl(node);
-      }
       else if (type == RULE_DEFINITION) {
         return new CFGRuleDefinitionImpl(node);
       }
-      else if (type == SEQUENCE_X) {
-        return new CFGSequenceXImpl(node);
+      else if (type == SEQUENCE) {
+        return new CFGSequenceImpl(node);
       }
       else if (type == TERMINAL) {
         return new CFGTerminalImpl(node);
-      }
-      else if (type == UNARY) {
-        return new CFGUnaryImpl(node);
       }
       throw new AssertionError("Unknown element type: " + type);
     }

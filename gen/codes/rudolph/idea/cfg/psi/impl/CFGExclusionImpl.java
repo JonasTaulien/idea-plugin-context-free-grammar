@@ -8,10 +8,9 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.util.PsiTreeUtil;
 import static codes.rudolph.idea.cfg.psi.CFGTypes.*;
-import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import codes.rudolph.idea.cfg.psi.*;
 
-public class CFGExclusionImpl extends ASTWrapperPsiElement implements CFGExclusion {
+public class CFGExclusionImpl extends CFGExpressionImpl implements CFGExclusion {
 
   public CFGExclusionImpl(ASTNode node) {
     super(node);
@@ -27,15 +26,9 @@ public class CFGExclusionImpl extends ASTWrapperPsiElement implements CFGExclusi
   }
 
   @Override
-  @Nullable
-  public CFGAlternativeX getAlternativeX() {
-    return findChildByClass(CFGAlternativeX.class);
-  }
-
-  @Override
-  @Nullable
-  public CFGExclusion getExclusion() {
-    return findChildByClass(CFGExclusion.class);
+  @NotNull
+  public List<CFGExpression> getExpressionList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, CFGExpression.class);
   }
 
 }

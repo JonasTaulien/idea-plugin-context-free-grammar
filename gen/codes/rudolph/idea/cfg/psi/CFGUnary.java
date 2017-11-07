@@ -5,21 +5,6 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface CFGUnary extends PsiElement {
-
-  @Nullable
-  CFGDelimitedRepetition getDelimitedRepetition();
-
-  @Nullable
-  CFGFullQualifiedRuleOrModuleName getFullQualifiedRuleOrModuleName();
-
-  @Nullable
-  CFGGroup getGroup();
-
-  @Nullable
-  CFGOptional getOptional();
-
-  @Nullable
-  CFGTerminal getTerminal();
+public interface CFGUnary extends CFGExpression {
 
 }

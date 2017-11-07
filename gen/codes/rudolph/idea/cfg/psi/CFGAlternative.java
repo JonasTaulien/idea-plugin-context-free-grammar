@@ -5,12 +5,9 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface CFGAlternative extends PsiElement {
+public interface CFGAlternative extends CFGExpression {
 
-  @Nullable
-  CFGAlternative getAlternative();
-
-  @Nullable
-  CFGSequenceX getSequenceX();
+  @NotNull
+  List<CFGSequence> getSequenceList();
 
 }

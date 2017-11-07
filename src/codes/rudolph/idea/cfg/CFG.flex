@@ -22,7 +22,6 @@ import static codes.rudolph.idea.cfg.psi.CFGTypes.*;
 %type IElementType
 %unicode
 
-EOL=\R
 WHITE_SPACE=\s+
 
 COMMENT=#[^\r\n]*

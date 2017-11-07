@@ -8,10 +8,9 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.util.PsiTreeUtil;
 import static codes.rudolph.idea.cfg.psi.CFGTypes.*;
-import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import codes.rudolph.idea.cfg.psi.*;
 
-public class CFGFullQualifiedRuleOrModuleNameImpl extends ASTWrapperPsiElement implements CFGFullQualifiedRuleOrModuleName {
+public class CFGFullQualifiedRuleOrModuleNameImpl extends CFGExpressionImpl implements CFGFullQualifiedRuleOrModuleName {
 
   public CFGFullQualifiedRuleOrModuleNameImpl(ASTNode node) {
     super(node);

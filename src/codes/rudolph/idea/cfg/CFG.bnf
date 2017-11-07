@@ -51,9 +51,9 @@
 
 ContextFreeGrammar ::= COMMENT* ModuleDefinition (ImportDefinition | COMMENT)* (RuleDefinition | COMMENT)*
 
-ModuleDefinition ::= MODULE_DEF FullQualifiedRuleOrModuleName DEFINITION_END {pin=1}
-ImportDefinition ::= IMPORT_DEF FullQualifiedRuleOrModuleName [ALIAS_OP FullQualifiedRuleOrModuleName] DEFINITION_END {pin=1}
-RuleDefinition ::= ID RUL_OP Expression DEFINITION_END {pin=2}
+ModuleDefinition ::= MODULE_DEF FullQualifiedRuleOrModuleName DEFINITION_END
+ImportDefinition ::= IMPORT_DEF FullQualifiedRuleOrModuleName [ALIAS_OP FullQualifiedRuleOrModuleName] DEFINITION_END
+RuleDefinition ::= ID RUL_OP Expression DEFINITION_END
 
 // Binary Recursive Operators: From least to most binding:
 // - Exclusion: A / B
@@ -74,42 +74,35 @@ RuleDefinition ::= ID RUL_OP Expression DEFINITION_END {pin=2}
 // - A | B - C <=> A | (B - C)
 // - A - B / C <=> (A - B) / C
 // - A / B - C <=> A / (B - C)
+Expression ::= Exclusion
 
-//Source: http://www.fh-wedel.de/~si/vorlesungen/cb/Beispiele/parser/expr/expr.html
-Expression ::= AlternativeX Exclusion {pin=2}
-Exclusion ::= EXC_OP AlternativeX Exclusion
-            |
+Exclusion ::= Alternative [EXC_OP Alternative] {extends=Expression}
 
-AlternativeX ::= SequenceX Alternative {pin=2}
-Alternative ::= ALT_OP SequenceX Alternative
-              |
-              {pin=1}
+Alternative ::= Sequence (ALT_OP Sequence)* {extends=Expression}
               
-SequenceX ::= RangeX+
+Sequence ::= Range+ {extends=Expression}
            
-RangeX ::= Unary Range {pin=2}
-Range ::= RNG_OP Unary Range
-        |
+Range ::= Unary [RNG_OP Unary] {extends=Expression}
 
 Unary ::= Terminal
         | FullQualifiedRuleOrModuleName
         | Optional
         | DelimitedRepetition
-        | Group
+        | Group {extends=Expression}
 
 Terminal ::= STRING
-           | UNICODE
+           | UNICODE {extends=Expression}
 
-FullQualifiedRuleOrModuleName ::= ID (SUB_MODULE_OP ID)* {pin=1}
+FullQualifiedRuleOrModuleName ::= ID (SUB_MODULE_OP ID)* {extends=Expression}
 
-Optional ::= OPT_OPEN Expression OPT_CLOSE {pin=1}
+Optional ::= OPT_OPEN Expression OPT_CLOSE {extends=Expression}
 
-DelimitedRepetition ::= REP_OPEN [Min] Expression [Delimiter] [Max] REP_CLOSE {pin=1}
-Min ::= NATURAL_NUMBER REP_MIN_CLOSE {pin=2}
-Delimiter ::= REP_DELIM Expression {pin=1}
+DelimitedRepetition ::= REP_OPEN [Min] Expression [Delimiter] [Max] REP_CLOSE {extends=Expression}
+Min ::= NATURAL_NUMBER REP_MIN_CLOSE
+Delimiter ::= REP_DELIM Expression
 
-Max ::= REP_MAX_OPEN MaxValue {pin=1}
+Max ::= REP_MAX_OPEN MaxValue
 MaxValue ::= NON_ZERO_NATURAL_NUMBER 
            | INFINITE
 
-Group ::= GR_OPEN Expression GR_CLOSE {pin=1}
+Group ::= GR_OPEN Expression GR_CLOSE {extends=Expression}

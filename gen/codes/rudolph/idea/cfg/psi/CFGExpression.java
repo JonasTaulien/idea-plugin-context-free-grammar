@@ -7,10 +7,4 @@ import com.intellij.psi.PsiElement;
 
 public interface CFGExpression extends PsiElement {
 
-  @NotNull
-  CFGAlternativeX getAlternativeX();
-
-  @NotNull
-  CFGExclusion getExclusion();
-
 }
