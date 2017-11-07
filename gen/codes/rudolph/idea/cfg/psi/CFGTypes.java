@@ -26,10 +26,10 @@ public interface CFGTypes {
   IElementType RANGE = new CFGElementType("RANGE");
   IElementType RULE_DEFINITION = new CFGElementType("RULE_DEFINITION");
   IElementType SEQUENCE = new CFGElementType("SEQUENCE");
-  IElementType STRING = new CFGElementType("STRING_TOK");
+  IElementType STRING = new CFGElementType("STRING");
   IElementType TERMINAL = new CFGElementType("TERMINAL");
   IElementType UNARY = new CFGElementType("UNARY");
-  IElementType UNICODE = new CFGElementType("UNICODE_TOK");
+  IElementType UNICODE = new CFGElementType("UNICODE");
 
   IElementType ALIAS_OP = new CFGTokenType("as");
   IElementType ALT_OP = new CFGTokenType("|");
