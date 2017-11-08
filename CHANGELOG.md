@@ -24,7 +24,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 (security fixes)
 
 ### Maintenance
-(other changes, that are only interesting for developers of this project)
+* Minor class renaming
 
 
 

@@ -35,6 +35,6 @@ public class CFGFileType extends LanguageFileType {
     @Nullable
     @Override
     public Icon getIcon() {
-        return Icons.FILE;
+        return CFGIcons.FILE;
     }
 }

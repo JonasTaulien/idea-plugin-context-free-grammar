@@ -15,7 +15,7 @@ public class CFGColorSettingsPage implements ColorSettingsPage {
     @Nullable
     @Override
     public Icon getIcon() {
-        return Icons.FILE;
+        return CFGIcons.FILE;
     }
 
     @NotNull
