@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 * There is now a distinction between characters like `'A'`, `"."` or `'\''` and strings like `''`, `""`, `'ab'` or `"\"b"`
-* Ranges can now only build from characters or unicode's
+* Ranges now only allow characters or unicode-symbols
 
 ### Deprecated
 (changes that will be removed in an upcoming release)
@@ -34,6 +34,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [0.1.1] - 2017-11-07
 ### Added
 * Syntax Highlighting of Context Free Grammars
+
+
+
+## [0.1.0] - 2017-11-07
+State before keeping a changelog.
 
 
 
