@@ -2,7 +2,7 @@
 * Continue: http://www.jetbrains.org/intellij/sdk/docs/tutorials/custom_language_support/psi_helper_and_utilities.html
 
 ## High Prio
-* Think about how import are ment, adjust Syntax afterwards
+* Think about how imports are ment, adjust Syntax afterwards
 * Document and describe the 'Context Free Grammar'-Syntax in README.md
 * Add Commenter
 * Highlight matching brace/parenthesis/bracket
