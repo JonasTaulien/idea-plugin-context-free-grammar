@@ -19,7 +19,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 (removed features)
 
 ### Fixed
-(fixed bugs)
+* Names of Group-parenthesis in ColorSettingsPage 
 
 ### Security
 (security fixes)
