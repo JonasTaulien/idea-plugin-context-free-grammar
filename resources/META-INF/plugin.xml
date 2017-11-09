@@ -24,10 +24,10 @@
   -->
 
   <extensions defaultExtensionNs="com.intellij">
-      <fileTypeFactory implementation="codes.rudolph.idea.cfg.CFGFileTypeFactory"/>
-      <lang.parserDefinition language="CFGLanguage" implementationClass="codes.rudolph.idea.cfg.CFGParserDefinition"/>
-      <lang.syntaxHighlighterFactory language="CFGLanguage" implementationClass="codes.rudolph.idea.cfg.CFGSyntaxHighlighterFactory"/>
-      <colorSettingsPage implementation="codes.rudolph.idea.cfg.CFGColorSettingsPage"/>
+      <fileTypeFactory implementation="codes.rudolph.idea.cfg.CfgFileTypeFactory"/>
+      <lang.parserDefinition language="CfgLanguage" implementationClass="codes.rudolph.idea.cfg.CfgParserDefinition"/>
+      <lang.syntaxHighlighterFactory language="CfgLanguage" implementationClass="codes.rudolph.idea.cfg.CfgSyntaxHighlighterFactory"/>
+      <colorSettingsPage implementation="codes.rudolph.idea.cfg.CfgColorSettingsPage"/>
   </extensions>
 
   <actions>

@@ -5,18 +5,18 @@ import com.intellij.psi.tree.IElementType;
 
 import static com.intellij.psi.TokenType.BAD_CHARACTER;
 import static com.intellij.psi.TokenType.WHITE_SPACE;
-import static codes.rudolph.idea.cfg.psi.CFGTypes.*;
+import static codes.rudolph.idea.cfg.psi.CfgTypes.*;
 
 %%
 
 %{
-  public CFGLexer() {
+  public CfgLexer() {
     this((java.io.Reader)null);
   }
 %}
 
 %public
-%class CFGLexer
+%class CfgLexer
 %implements FlexLexer
 %function advance
 %type IElementType

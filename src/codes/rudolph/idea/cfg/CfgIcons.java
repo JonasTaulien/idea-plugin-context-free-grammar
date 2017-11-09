@@ -4,6 +4,6 @@ import com.intellij.openapi.util.IconLoader;
 
 import javax.swing.Icon;
 
-public class CFGIcons {
+public class CfgIcons {
     public static final Icon FILE = IconLoader.getIcon("/codes/rudolph/idea/cfg/jar-gray.png");
 }

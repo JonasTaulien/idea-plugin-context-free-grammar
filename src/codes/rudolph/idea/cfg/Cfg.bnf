@@ -1,16 +1,18 @@
 {
-  parserClass="codes.rudolph.idea.cfg.parser.CFGParser"
+  parserClass="codes.rudolph.idea.cfg.parser.CfgParser"
 
   extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
 
-  psiClassPrefix="CFG"
+  psiClassPrefix="Cfg"
   psiImplClassSuffix="Impl"
   psiPackage="codes.rudolph.idea.cfg.psi"
   psiImplPackage="codes.rudolph.idea.cfg.psi.impl"
 
-  elementTypeHolderClass="codes.rudolph.idea.cfg.psi.CFGTypes"
-  elementTypeClass="codes.rudolph.idea.cfg.psi.CFGElementType"
-  tokenTypeClass="codes.rudolph.idea.cfg.psi.CFGTokenType"
+  elementTypeHolderClass="codes.rudolph.idea.cfg.psi.CfgTypes"
+  elementTypeClass="codes.rudolph.idea.cfg.psi.CfgElementType"
+  tokenTypeClass="codes.rudolph.idea.cfg.psi.CfgTokenType"
+  
+  psiImplUtilClass="codes.rudolph.idea.cfg.psi.impl.CfgPsiImplUtil"
   
   tokens = [
       MODULE_DEF="module"
@@ -61,7 +63,7 @@ RuleDefinition ::= ID RUL_OP Expression DEFINITION_END {pin="RUL_OP"}
 // - Exclusion: A / B
 // - Alternative: A | B
 // - Sequence: A B
-// - Range: A - B
+// - Range: 'a' - 'z'
 //
 // That means:
 // - A / B C   <=> A / (B C)
@@ -70,12 +72,12 @@ RuleDefinition ::= ID RUL_OP Expression DEFINITION_END {pin="RUL_OP"}
 // - A / B | C <=> A / (B | C)
 // - A B | C   <=> (A B) | C
 // - A | B C   <=> A | (B C)
-// - A - B C   <=> (A - B) C
-// - A B - C   <=> A (B - C)
-// - A - B | C <=> (A - B) | C
-// - A | B - C <=> A | (B - C)
-// - A - B / C <=> (A - B) / C
-// - A / B - C <=> A / (B - C)
+// - 'a' - 'b' C   <=> ('a' - 'b') C
+// - A 'b' - 'c'   <=> A ('b' - 'c')
+// - 'a' - 'b' | C <=> ('a' - 'b') | C
+// - A | 'b' - 'c' <=> A | ('b' - 'c')
+// - 'a' - 'b' / C <=> ('a' - 'b') / C
+// - A / 'b' - 'c' <=> A / ('b' - 'c')
 Expression ::= Exclusion
 
 Exclusion ::= Alternative [EXC_OP Alternative] {extends=Expression pin(".*")="EXC_OP"}

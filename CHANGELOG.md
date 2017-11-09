@@ -27,6 +27,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Maintenance
 * Minor class renaming
 * Removed generated files from git
+* Changed `CFG`-Prefix to `Cfg`
 
 
 

@@ -25,6 +25,7 @@
 * Own icon
 * Add multiline-comments
 * Add check: Same expression mutiple times in alternative
+* Add support for `ε` as a replacement for `''` or `""`
 * Refactorings
     * `{1>A<*}`, `{A<*}` or `{1>A}` to `{A}`
     * `{0>A<x}` to `[{A<(x-1)}]`

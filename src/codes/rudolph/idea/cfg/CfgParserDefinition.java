@@ -5,20 +5,20 @@ import com.intellij.lexer.Lexer;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.*;
 import com.intellij.psi.tree.*;
-import codes.rudolph.idea.cfg.parser.CFGParser;
+import codes.rudolph.idea.cfg.parser.CfgParser;
 import codes.rudolph.idea.cfg.psi.*;
 import org.jetbrains.annotations.NotNull;
 
-public class CFGParserDefinition implements ParserDefinition {
+public class CfgParserDefinition implements ParserDefinition {
     public static final TokenSet WHITE_SPACES = TokenSet.create(TokenType.WHITE_SPACE);
-    public static final TokenSet COMMENTS = TokenSet.create(CFGTypes.COMMENT);
+    public static final TokenSet COMMENTS = TokenSet.create(CfgTypes.COMMENT);
 
-    public static final IFileElementType FILE = new IFileElementType(CFGLanguage.INSTANCE);
+    public static final IFileElementType FILE = new IFileElementType(CfgLanguage.INSTANCE);
 
     @NotNull
     @Override
     public Lexer createLexer(Project project) {
-        return new CFGLexerAdapter();
+        return new CfgLexerAdapter();
     }
 
     @NotNull
@@ -38,7 +38,7 @@ public class CFGParserDefinition implements ParserDefinition {
 
     @NotNull
     public PsiParser createParser(final Project project) {
-        return new CFGParser();
+        return new CfgParser();
     }
 
     @Override
@@ -47,7 +47,7 @@ public class CFGParserDefinition implements ParserDefinition {
     }
 
     public PsiFile createFile(FileViewProvider viewProvider) {
-        return new CFGFile(viewProvider);
+        return new CfgFile(viewProvider);
     }
 
     public SpaceRequirements spaceExistanceTypeBetweenTokens(ASTNode left, ASTNode right) {
@@ -56,6 +56,6 @@ public class CFGParserDefinition implements ParserDefinition {
 
     @NotNull
     public PsiElement createElement(ASTNode node) {
-        return CFGTypes.Factory.createElement(node);
+        return CfgTypes.Factory.createElement(node);
     }
 }
