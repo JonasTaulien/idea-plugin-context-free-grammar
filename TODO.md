@@ -1,13 +1,18 @@
 # TODO
+* Continue: http://www.jetbrains.org/intellij/sdk/docs/tutorials/custom_language_support/psi_helper_and_utilities.html
+
 ## High Prio
+* Think about how import are ment, adjust Syntax afterwards
 * Document and describe the 'Context Free Grammar'-Syntax in README.md
 * Add Commenter
 * Highlight matching brace/parenthesis/bracket
 * Highlight usages of thing under cursor
-* Add Jump-To-Definition (across modules)
+* Jump-To-Definition: of module
+* Jump-To-Definition: of imported rule name (across modules)
+* Jump-To-Definition: of aliased imported rule name
 * Add check: Referenced module does not exist
 * Add check: Referenced rule does not exist (across modules)
-* Add check: Duplicate rule-name (across modules)
+* Add check: Duplicate rule-name (across modules & Imports)
 * Refactoring: Rename rule (across modules)
 * Autocomplete: rule-names
 * Autocomplete: module-names
