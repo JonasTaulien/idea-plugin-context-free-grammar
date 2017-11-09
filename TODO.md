@@ -1,5 +1,4 @@
 # TODO
-* Ranges should only accept One-Character-Strings (escaped character counts as one character) or Unicode-Tokens
 * Continue Tutorial (http://www.jetbrains.org/intellij/sdk/docs/tutorials/custom_language_support/psi_helper_and_utilities.html)
 * Document and describe the 'Context Free Grammar'-Syntax
 * Write README with fancy images.
@@ -29,6 +28,8 @@
     * `{0>A<1}` to `[A]`
     * `A A ... A` to `{x>A<x}`
     * `A [{x>B A<y}]` to `{(x+1)> A $ B <(y+1)}`
+    * Double-Quoted String containing `\"` (but not `'`) to Single-Quoted String having `"` 
+    * Single-Quoted String containing `\'` (but not `"`) to Double-Quoted String having `'` 
     * Crate new rule from expression
     * Rename rule
         * Inside file

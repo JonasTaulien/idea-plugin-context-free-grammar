@@ -78,7 +78,8 @@ public class CFGColorSettingsPage implements ColorSettingsPage {
                 new AttributesDescriptor("Repetition Max Indicator", CFGSyntaxHighlighter.REP_MAX_OPEN),
                 new AttributesDescriptor("Max Number", CFGSyntaxHighlighter.NON_ZERO_NATURAL_NUMBER),
                 new AttributesDescriptor("Infinite", CFGSyntaxHighlighter.INFINITE),
-                new AttributesDescriptor("String", CFGSyntaxHighlighter.STRING_TOK),
+                new AttributesDescriptor("String", CFGSyntaxHighlighter.MULTI_CHAR_STRING_TOK),
+                new AttributesDescriptor("Character", CFGSyntaxHighlighter.ONE_CHAR_STRING_TOK),
                 new AttributesDescriptor("Unicode", CFGSyntaxHighlighter.UNICODE_TOK)
         };
     }

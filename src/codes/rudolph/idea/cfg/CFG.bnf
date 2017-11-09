@@ -40,7 +40,9 @@
       DEFINITION_END=";"
       
       UNICODE_TOK="regexp:\\u[0-9A-Fa-f]{4}"
-      STRING_TOK="regexp:('([^'\\]|\\.)*'|\"([^\"\\]|\\.)*\")"
+      //All Strings that are empty or contain at least 2 characters
+      MULTI_CHAR_STRING_TOK="regexp:(('')|(\"\")|('(([^'\\]{2}[^'\\]*)|(([^'\\]|(\\.))+(\\.)+([^'\\]|(\\.))*)|(([^'\\]|(\\.))*(\\.)+([^'\\]|(\\.))+))')|(\"(([^\"\\]{2}[^\"\\]*)|(([^\"\\]|(\\.))+(\\.)+([^\"\\]|(\\.))*)|(([^\"\\]|(\\.))*(\\.)+([^\"\\]|(\\.))+))\"))"
+      ONE_CHAR_STRING_TOK="regexp:(('([^'\\]|(\\.))')|(\"([^\"\\]|(\\.))\"))"
       NATURAL_NUMBER="regexp:(0|[1-9][0-9]*)"
       NON_ZERO_NATURAL_NUMBER="regexp:[1-9][0-9]*"
       ID='regexp:[A-Za-z_][A-Za-z_0-9]*'
@@ -82,7 +84,8 @@ Alternative ::= Sequence (ALT_OP Sequence)* {extends=Expression pin(".*")="ALT_O
               
 Sequence ::= Range+ {extends=Expression}
            
-Range ::= Unary [RNG_OP Unary] {extends=Expression pin(".*")="RNG_OP"}
+Range ::= Character RNG_OP Character
+        | Unary {extends=Expression pin(".*")="RNG_OP"}
 
 Unary ::= Terminal
         | FullQualifiedRuleOrModuleName
@@ -90,11 +93,16 @@ Unary ::= Terminal
         | DelimitedRepetition
         | Group {extends=Expression}
 
-Terminal ::= String
-           | Unicode {extends=Unary}
+Terminal ::= MultiCharString
+           | Character {extends=Unary}
            
-String ::= STRING_TOK {extends=Terminal}
-Unicode ::= UNICODE_TOK {extends=Terminal}
+MultiCharString ::= MULTI_CHAR_STRING_TOK {extends=Terminal}
+
+Character ::= OneCharString
+            | Unicode {extends=Terminal}
+            
+Unicode ::= UNICODE_TOK {extends=Character}
+OneCharString ::= ONE_CHAR_STRING_TOK {extends=Character}
 
 FullQualifiedRuleOrModuleName ::= ID (SUB_MODULE_OP ID)* {extends=Unary pin(".*")="SUB_MODULE_OP"}
 

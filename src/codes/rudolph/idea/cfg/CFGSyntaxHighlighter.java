@@ -80,8 +80,11 @@ public class CFGSyntaxHighlighter extends SyntaxHighlighterBase {
     public static final TextAttributesKey RUL_OP = createTextAttributesKey(
             "CFG_RUL_OP", DefaultLanguageHighlighterColors.KEYWORD
     );
-    public static final TextAttributesKey STRING_TOK = createTextAttributesKey(
-            "CFG_STRING_TOK", DefaultLanguageHighlighterColors.STRING
+    public static final TextAttributesKey MULTI_CHAR_STRING_TOK = createTextAttributesKey(
+            "CFG_MULTI_CHAR_STRING_TOK", DefaultLanguageHighlighterColors.STRING
+    );
+    public static final TextAttributesKey ONE_CHAR_STRING_TOK = createTextAttributesKey(
+            "CFG_ONE_CHAR_STRING_TOK", DefaultLanguageHighlighterColors.NUMBER
     );
     public static final TextAttributesKey SUB_MODULE_OP = createTextAttributesKey(
             "CFG_SUB_MODULE_OP", DefaultLanguageHighlighterColors.DOT
@@ -146,8 +149,10 @@ public class CFGSyntaxHighlighter extends SyntaxHighlighterBase {
             return new TextAttributesKey[]{RNG_OP};
         } else if (tokenType.equals(CFGTypes.RUL_OP)) {
             return new TextAttributesKey[]{RUL_OP};
-        } else if (tokenType.equals(CFGTypes.STRING_TOK)) {
-            return new TextAttributesKey[]{STRING_TOK};
+        } else if (tokenType.equals(CFGTypes.MULTI_CHAR_STRING_TOK)) {
+            return new TextAttributesKey[]{MULTI_CHAR_STRING_TOK};
+        } else if (tokenType.equals(CFGTypes.ONE_CHAR_STRING_TOK)) {
+            return new TextAttributesKey[]{ONE_CHAR_STRING_TOK};
         } else if (tokenType.equals(CFGTypes.SUB_MODULE_OP)) {
             return new TextAttributesKey[]{SUB_MODULE_OP};
         } else if (tokenType.equals(CFGTypes.UNICODE_TOK)) {

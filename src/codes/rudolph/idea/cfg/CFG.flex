@@ -26,7 +26,8 @@ WHITE_SPACE=\s+
 
 COMMENT=#[^\r\n]*
 UNICODE_TOK=\\u[0-9A-Fa-f]{4}
-STRING_TOK=('([^'\\]|\\.)*'|\"([^\"\\]|\\.)*\")
+MULTI_CHAR_STRING_TOK=(('')|(\"\")|('(([^'\\]{2}[^'\\]*)|(([^'\\]|(\\.))+(\\.)+([^'\\]|(\\.))*)|(([^'\\]|(\\.))*(\\.)+([^'\\]|(\\.))+))')|(\"(([^\"\\]{2}[^\"\\]*)|(([^\"\\]|(\\.))+(\\.)+([^\"\\]|(\\.))*)|(([^\"\\]|(\\.))*(\\.)+([^\"\\]|(\\.))+))\"))
+ONE_CHAR_STRING_TOK=(('([^'\\]|(\\.))')|(\"([^\"\\]|(\\.))\"))
 NATURAL_NUMBER=(0|[1-9][0-9]*)
 NON_ZERO_NATURAL_NUMBER=[1-9][0-9]*
 ID=[A-Za-z_][A-Za-z_0-9]*
@@ -57,7 +58,8 @@ ID=[A-Za-z_][A-Za-z_0-9]*
 
   {COMMENT}                      { return COMMENT; }
   {UNICODE_TOK}                  { return UNICODE_TOK; }
-  {STRING_TOK}                   { return STRING_TOK; }
+  {MULTI_CHAR_STRING_TOK}        { return MULTI_CHAR_STRING_TOK; }
+  {ONE_CHAR_STRING_TOK}          { return ONE_CHAR_STRING_TOK; }
   {NATURAL_NUMBER}               { return NATURAL_NUMBER; }
   {ID}                           { return ID; }
 }

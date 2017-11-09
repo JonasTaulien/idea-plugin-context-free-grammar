@@ -9,7 +9,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 (new features)
 
 ### Changed
-(changes in existing functionality)
+* There is now a distinction between characters like `'A'`, `"."` or `'\''` and strings like `''`, `""`, `'ab'` or `"\"b"`
+* Ranges can now only build from characters or unicode's
 
 ### Deprecated
 (changes that will be removed in an upcoming release)
