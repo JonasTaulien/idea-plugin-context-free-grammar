@@ -19,7 +19,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 (removed features)
 
 ### Fixed
-* Names of Group-parenthesis in ColorSettingsPage 
+* Names of Group-parenthesis in ColorSettingsPage
+* Added entry in dependency list of plugin.xml so this plugin is not marked as legacy anymore.
 
 ### Security
 (security fixes)
