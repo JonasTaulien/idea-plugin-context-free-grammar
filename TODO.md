@@ -2,8 +2,9 @@
 * Continue: http://www.jetbrains.org/intellij/sdk/docs/tutorials/custom_language_support/psi_helper_and_utilities.html
 
 ## High Prio
-* Think about how imports are ment, adjust Syntax afterwards
-* Document and describe the 'Context Free Grammar'-Syntax in README.md
+* Try to make the semicolon optional.
+* Change unicode syntax from `\uXXXX` to `U+XXXXXX` where the last two `X` are optional.
+* Define discrete set of escape-able characters (`\n`, `\t`, `\'`, `\"` etc) and adjust syntax
 * Add Commenter
 * Highlight matching brace/parenthesis/bracket
 * Highlight usages of thing under cursor
@@ -12,7 +13,8 @@
 * Jump-To-Definition: of aliased imported rule name
 * Add check: Referenced module does not exist
 * Add check: Referenced rule does not exist (across modules)
-* Add check: Duplicate rule-name (across modules & Imports)
+* Add check: Duplicate module name when using the `import ... as ...;` syntax
+* Add check: Module name does not match file name
 * Refactoring: Rename rule (across modules)
 * Autocomplete: rule-names
 * Autocomplete: module-names
@@ -50,6 +52,6 @@
     * Export as Styled HTML code block for using syntax in some documentation.
     * Helper for resolving ambiguities
     * Generate (E)BNF
-    * Parse string against some rule -> Parse-tree, JSON
+    * Parse string against some rule -> Parse-tree or JSON
     * Match string against some rule
     * Create syntax diagram

@@ -59,25 +59,6 @@ ModuleDefinition ::= MODULE_DEF FullQualifiedRuleOrModuleName DEFINITION_END {pi
 ImportDefinition ::= IMPORT_DEF FullQualifiedRuleOrModuleName [ALIAS_OP FullQualifiedRuleOrModuleName] DEFINITION_END {pin="IMPORT_DEF"}
 RuleDefinition ::= ID RUL_OP Expression DEFINITION_END {pin="RUL_OP"}
 
-// Binary Recursive Operators: From least to most binding:
-// - Exclusion: A / B
-// - Alternative: A | B
-// - Sequence: A B
-// - Range: 'a' - 'z'
-//
-// That means:
-// - A / B C   <=> A / (B C)
-// - A B / C   <=> (A B) / C
-// - A | B / C <=> (A | B) / C
-// - A / B | C <=> A / (B | C)
-// - A B | C   <=> (A B) | C
-// - A | B C   <=> A | (B C)
-// - 'a' - 'b' C   <=> ('a' - 'b') C
-// - A 'b' - 'c'   <=> A ('b' - 'c')
-// - 'a' - 'b' | C <=> ('a' - 'b') | C
-// - A | 'b' - 'c' <=> A | ('b' - 'c')
-// - 'a' - 'b' / C <=> ('a' - 'b') / C
-// - A / 'b' - 'c' <=> A / ('b' - 'c')
 Expression ::= Exclusion
 
 Exclusion ::= Alternative [EXC_OP Alternative] {extends=Expression pin(".*")="EXC_OP"}

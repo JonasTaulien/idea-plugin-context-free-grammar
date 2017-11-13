@@ -26,6 +26,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 (security fixes)
 
 ### Maintenance
+* Wrote README.md
 * Minor class renaming
 * Removed generated files from git
 * Changed `CFG`-Prefix to `Cfg`

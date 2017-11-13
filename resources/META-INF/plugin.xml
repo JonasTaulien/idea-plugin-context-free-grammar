@@ -5,12 +5,15 @@
   <vendor email="jonas.ru@gmx.de" url="http://www.rudolph.codes">Jonas Rudolph</vendor>
 
   <description><![CDATA[
-      Adds support for an EBNF-like context free grammar.<br>
+      Adds support for EBNF-like context free grammars.<br>
+      This plugin currently is ment for working with grammars in the specification and/or documentation phase.<br>
+      For a detailed description read the <a href="https://github.com/JonasRudolph/idea-plugin-context-free-grammar/blob/master/README.md">README</a>.<br>
+      Read the <a href="https://github.com/JonasRudolph/idea-plugin-context-free-grammar/blob/master/TODO.md">TODO-List</a> for knowing what I will add or might add in future releases.<br>
       Made by <a href="http://www.rudolph.codes">Jonas Rudolph</a>
     ]]></description>
 
   <change-notes><![CDATA[
-      For changes see CHANGELOG.md (https://github.com/JonasRudolph/idea-plugin-context-free-grammar/blob/master/CHANGELOG.md)
+      Read the <a href="https://github.com/JonasRudolph/idea-plugin-context-free-grammar/blob/master/CHANGELOG.md">Change Log</a>.
     ]]>
   </change-notes>
 
@@ -30,5 +33,4 @@
   <actions>
     <!-- Add your actions here -->
   </actions>
-
 </idea-plugin>
