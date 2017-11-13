@@ -9,8 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 (new features)
 
 ### Changed
-* There is now a distinction between characters like `'A'`, `"."` or `'\''` and strings like `''`, `""`, `'ab'` or `"\"b"`
-* Ranges now only allow characters or unicode-symbols
+(changes in existing functionality)
 
 ### Deprecated
 (changes that will be removed in an upcoming release)
@@ -19,11 +18,24 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 (removed features)
 
 ### Fixed
-* Names of Group-parenthesis in ColorSettingsPage
-* Added entry in dependency list of plugin.xml so this plugin is not marked as legacy anymore.
+(fixed bugs)
 
 ### Security
 (security fixes)
+
+### Maintenance
+(other changes, that are only interesting for developers of this project)
+
+
+
+## [0.2.0] - 2017-11-13
+### Changed
+* There is now a distinction between characters like `'A'`, `"."` or `'\''` and strings like `''`, `""`, `'ab'` or `"\"b"`
+* Ranges now only allow characters or unicode-symbols
+
+### Fixed
+* Names of Group-parenthesis in ColorSettingsPage
+* Added entry in dependency list of plugin.xml so this plugin is not marked as legacy anymore.
 
 ### Maintenance
 * Wrote README.md
