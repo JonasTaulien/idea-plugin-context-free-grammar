@@ -1,7 +1,7 @@
 <idea-plugin>
   <id>codes.rudolph.idea.cfg</id>
   <name>Context Free Grammar</name>
-  <version>0.1.1</version>
+  <version>0.2.0</version>
   <vendor email="jonas.ru@gmx.de" url="http://www.rudolph.codes">Jonas Rudolph</vendor>
 
   <description><![CDATA[
