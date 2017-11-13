@@ -96,6 +96,8 @@ A: 'a';
 B: A;
 ```
 
+The rule you reference must be defined in this module or in a module you import.
+
 ###### Sequence
 You can define a sequence by writing at least two expressions right after another:
 ```cfg
@@ -128,6 +130,7 @@ module A;
 
 Unicode: \u0000-\uFFFF;
 ```
+Ranges only allow Character- or Unicode-Expression on each side.
 
 ###### Exclusion
 You can exclude with the `/` operator:
@@ -160,7 +163,7 @@ Name: {2> 'a'-'z' | 'A'-'Z' <255};
 Word: {'a'-'z' | 'A'-'Z' | '_' | '0'-'9' <*};
 ```
 
-There also exists a special list-syntax by using the `{ <Expression> $ <Expression> }` Syntax:
+There also exists a special list-syntax (`{ <Expression> $ <Expression> })`:
 ```cfg
 module MyLanguage;
 
