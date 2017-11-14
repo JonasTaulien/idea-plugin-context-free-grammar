@@ -32,16 +32,15 @@ public class CfgColorSettingsPage implements ColorSettingsPage {
                 "\n" +
                 "# has some imports\n" +
                 "import B;\n" +
-                "import C.D as D;\n" +
+                "import C.D as Basics;\n" +
                 "import E.F.G as F.G;\n" +
                 "\n" +
                 "# and some syntax rules\n" +
-                "A: 'Hello' NameWithoutX NewLine Message;\n" +
+                "A: 'Hello' NameWithoutX Basics.NewLine Message;\n" +
                 "NameWithoutX: {'a'-'z' / 'x' <*};\n" +
                 "\n" +
-                "Message: {0> Sentence $ NewLine <3} Salutation;\n" +
-                "Sentence: {\\u0020-\\u007E};\n" +
-                "NewLine: \\u000A;\n" +
+                "Message: {0> Sentence $ Basics.NewLine <3} Salutation;\n" +
+                "Sentence: {\\u0020-\\u007E} '.';\n" +
                 "Salutation: \"Greetings\" ['from' ('Germany' | 'USA')];";
     }
 

@@ -8,7 +8,7 @@
       Adds support for EBNF-like context free grammars.<br>
       This plugin currently is ment for working with grammars in the specification and/or documentation phase.<br>
       For a detailed description read the <a href="https://github.com/JonasRudolph/idea-plugin-context-free-grammar/blob/master/README.md">README</a>.<br>
-      Read the <a href="https://github.com/JonasRudolph/idea-plugin-context-free-grammar/blob/master/TODO.md">TODO-List</a> for knowing what I will add or might add in future releases.<br>
+      Read the <a href="https://github.com/JonasRudolph/idea-plugin-context-free-grammar/blob/master/TODO.md">TODO-List</a> for knowing what I plan to add or change in future releases.<br>
       Made by <a href="http://www.rudolph.codes">Jonas Rudolph</a>
     ]]></description>
 
