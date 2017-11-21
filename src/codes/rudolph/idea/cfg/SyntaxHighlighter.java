@@ -1,6 +1,6 @@
-package codes.rudolph.idea.cfgr;
+package codes.rudolph.idea.cfg;
 
-import codes.rudolph.idea.cfgr.psi.Types;
+import codes.rudolph.idea.cfg.psi.Types;
 import com.intellij.lexer.Lexer;
 import com.intellij.openapi.editor.DefaultLanguageHighlighterColors;
 import com.intellij.openapi.editor.HighlighterColors;
@@ -15,85 +15,85 @@ import static com.intellij.openapi.editor.colors.TextAttributesKey.createTextAtt
 public class SyntaxHighlighter extends SyntaxHighlighterBase {
 
     public static final TextAttributesKey ALIAS_OP = createTextAttributesKey(
-            "CGFR_ALIAS_OP", DefaultLanguageHighlighterColors.KEYWORD
+            "CFG_ALIAS_OP", DefaultLanguageHighlighterColors.KEYWORD
     );
     public static final TextAttributesKey ALT_OP = createTextAttributesKey(
-            "CGFR_ALT_OP", DefaultLanguageHighlighterColors.KEYWORD
+            "CFG_ALT_OP", DefaultLanguageHighlighterColors.KEYWORD
     );
     public static final TextAttributesKey COMMENT = createTextAttributesKey(
-            "CGFR_COMMENT", DefaultLanguageHighlighterColors.LINE_COMMENT
+            "CFG_COMMENT", DefaultLanguageHighlighterColors.LINE_COMMENT
     );
     public static final TextAttributesKey DEFINITION_END = createTextAttributesKey(
-            "CGFR_DEFINITION_END", DefaultLanguageHighlighterColors.KEYWORD
+            "CFG_DEFINITION_END", DefaultLanguageHighlighterColors.KEYWORD
     );
     public static final TextAttributesKey EXC_OP = createTextAttributesKey(
-            "CGFR_EXC_OP", DefaultLanguageHighlighterColors.KEYWORD
+            "CFG_EXC_OP", DefaultLanguageHighlighterColors.KEYWORD
     );
     public static final TextAttributesKey GR_CLOSE = createTextAttributesKey(
-            "CGFR_GR_CLOSE", DefaultLanguageHighlighterColors.PARENTHESES
+            "CFG_GR_CLOSE", DefaultLanguageHighlighterColors.PARENTHESES
     );
     public static final TextAttributesKey GR_OPEN = createTextAttributesKey(
-            "CGFR_GR_OPEN", DefaultLanguageHighlighterColors.PARENTHESES
+            "CFG_GR_OPEN", DefaultLanguageHighlighterColors.PARENTHESES
     );
     public static final TextAttributesKey ID = createTextAttributesKey(
-            "CGFR_ID", DefaultLanguageHighlighterColors.IDENTIFIER
+            "CFG_ID", DefaultLanguageHighlighterColors.IDENTIFIER
     );
     public static final TextAttributesKey IMPORT_DEF = createTextAttributesKey(
-            "CGFR_IMPORT_DEF", DefaultLanguageHighlighterColors.KEYWORD
+            "CFG_IMPORT_DEF", DefaultLanguageHighlighterColors.KEYWORD
     );
     public static final TextAttributesKey INFINITE = createTextAttributesKey(
-            "CGFR_INFINITE", DefaultLanguageHighlighterColors.NUMBER
+            "CFG_INFINITE", DefaultLanguageHighlighterColors.NUMBER
     );
     public static final TextAttributesKey MODULE_DEF = createTextAttributesKey(
-            "CGFR_MODULE_DEF", DefaultLanguageHighlighterColors.KEYWORD
+            "CFG_MODULE_DEF", DefaultLanguageHighlighterColors.KEYWORD
     );
     public static final TextAttributesKey NATURAL_NUMBER = createTextAttributesKey(
-            "CGFR_NATURAL_NUMBER", DefaultLanguageHighlighterColors.NUMBER
+            "CFG_NATURAL_NUMBER", DefaultLanguageHighlighterColors.NUMBER
     );
     public static final TextAttributesKey NON_ZERO_NATURAL_NUMBER = createTextAttributesKey(
-            "CGFR_NON_ZERO_NATURAL_NUMBER", DefaultLanguageHighlighterColors.NUMBER
+            "CFG_NON_ZERO_NATURAL_NUMBER", DefaultLanguageHighlighterColors.NUMBER
     );
     public static final TextAttributesKey OPT_CLOSE = createTextAttributesKey(
-            "CGFR_OPT_CLOSE", DefaultLanguageHighlighterColors.KEYWORD
+            "CFG_OPT_CLOSE", DefaultLanguageHighlighterColors.KEYWORD
     );
     public static final TextAttributesKey OPT_OPEN = createTextAttributesKey(
-            "CGFR_OPT_OPEN", DefaultLanguageHighlighterColors.KEYWORD
+            "CFG_OPT_OPEN", DefaultLanguageHighlighterColors.KEYWORD
     );
     public static final TextAttributesKey REP_CLOSE = createTextAttributesKey(
-            "CGFR_REP_CLOSE", DefaultLanguageHighlighterColors.KEYWORD
+            "CFG_REP_CLOSE", DefaultLanguageHighlighterColors.KEYWORD
     );
     public static final TextAttributesKey REP_DELIM = createTextAttributesKey(
-            "CGFR_REP_DELIM", DefaultLanguageHighlighterColors.KEYWORD
+            "CFG_REP_DELIM", DefaultLanguageHighlighterColors.KEYWORD
     );
     public static final TextAttributesKey REP_MAX_OPEN = createTextAttributesKey(
-            "CGFR_REP_MAX_OPEN", DefaultLanguageHighlighterColors.KEYWORD
+            "CFG_REP_MAX_OPEN", DefaultLanguageHighlighterColors.KEYWORD
     );
     public static final TextAttributesKey REP_MIN_CLOSE = createTextAttributesKey(
-            "CGFR_REP_MIN_CLOSE", DefaultLanguageHighlighterColors.KEYWORD
+            "CFG_REP_MIN_CLOSE", DefaultLanguageHighlighterColors.KEYWORD
     );
     public static final TextAttributesKey REP_OPEN = createTextAttributesKey(
-            "CGFR_REP_OPEN", DefaultLanguageHighlighterColors.KEYWORD
+            "CFG_REP_OPEN", DefaultLanguageHighlighterColors.KEYWORD
     );
     public static final TextAttributesKey RNG_OP = createTextAttributesKey(
-            "CGFR_RNG_OP", DefaultLanguageHighlighterColors.KEYWORD
+            "CFG_RNG_OP", DefaultLanguageHighlighterColors.KEYWORD
     );
     public static final TextAttributesKey RUL_OP = createTextAttributesKey(
-            "CGFR_RUL_OP", DefaultLanguageHighlighterColors.KEYWORD
+            "CFG_RUL_OP", DefaultLanguageHighlighterColors.KEYWORD
     );
     public static final TextAttributesKey MULTI_CHAR_STRING_TOK = createTextAttributesKey(
-            "CGFR_MULTI_CHAR_STRING_TOK", DefaultLanguageHighlighterColors.STRING
+            "CFG_MULTI_CHAR_STRING_TOK", DefaultLanguageHighlighterColors.STRING
     );
     public static final TextAttributesKey ONE_CHAR_STRING_TOK = createTextAttributesKey(
-            "CGFR_ONE_CHAR_STRING_TOK", DefaultLanguageHighlighterColors.NUMBER
+            "CFG_ONE_CHAR_STRING_TOK", DefaultLanguageHighlighterColors.NUMBER
     );
     public static final TextAttributesKey SUB_MODULE_OP = createTextAttributesKey(
-            "CGFR_SUB_MODULE_OP", DefaultLanguageHighlighterColors.DOT
+            "CFG_SUB_MODULE_OP", DefaultLanguageHighlighterColors.DOT
     );
     public static final TextAttributesKey UNICODE_TOK = createTextAttributesKey(
-            "CGFR_UNICODE", DefaultLanguageHighlighterColors.NUMBER
+            "CFG_UNICODE", DefaultLanguageHighlighterColors.NUMBER
     );
     public static final TextAttributesKey BAD_CHARACTER = createTextAttributesKey(
-            "CGFR_BAD_CHARACTER", HighlighterColors.BAD_CHARACTER
+            "CFG_BAD_CHARACTER", HighlighterColors.BAD_CHARACTER
     );
 
     @NotNull

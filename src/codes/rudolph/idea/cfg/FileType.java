@@ -1,4 +1,4 @@
-package codes.rudolph.idea.cfgr;
+package codes.rudolph.idea.cfg;
 
 import com.intellij.openapi.fileTypes.LanguageFileType;
 import org.jetbrains.annotations.NotNull;

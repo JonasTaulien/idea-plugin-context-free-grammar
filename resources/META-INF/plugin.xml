@@ -1,36 +1,38 @@
 <idea-plugin>
-  <id>codes.rudolph.idea.cfgr</id>
-  <name>Context Free Grammar</name>
-  <version>0.3.0</version>
-  <vendor email="jonas.ru@gmx.de" url="http://www.rudolph.codes">Jonas Rudolph</vendor>
+    <!-- JetBrains prohibits to change this to codes.rudolph.idea.cfg-->
+    <id>codes.rudolph.idea.cfg</id>
+    <name>Context Free Grammar</name>
+    <version>0.3.0</version>
+    <vendor email="jonas.ru@gmx.de" url="http://www.rudolph.codes">Jonas Rudolph</vendor>
 
-  <description><![CDATA[
+    <description><![CDATA[
       Adds support for EBNF-like context free grammars.<br>
-      This plugin currently is ment for working with grammars in the specification and/or documentation phase.<br>
+      This plugin currently is meant for working with grammars in the specification and/or documentation phase.<br>
       For a detailed description read the <a href="https://github.com/JonasRudolph/idea-plugin-context-free-grammar/blob/master/README.md">README</a>.<br>
       Read the <a href="https://github.com/JonasRudolph/idea-plugin-context-free-grammar/blob/master/TODO.md">TODO-List</a> for knowing what I plan to add or change in future releases.<br>
       Made by <a href="http://www.rudolph.codes">Jonas Rudolph</a>
     ]]></description>
 
-  <change-notes><![CDATA[
+    <change-notes><![CDATA[
       Read the <a href="https://github.com/JonasRudolph/idea-plugin-context-free-grammar/blob/master/CHANGELOG.md">Change Log</a>.
     ]]>
-  </change-notes>
+    </change-notes>
 
-  <!-- http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html -->
-  <idea-version since-build="145.0"/>
+    <!-- http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html -->
+    <idea-version since-build="145.0"/>
 
-  <!-- http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html -->
-  <depends>com.intellij.modules.lang</depends>
+    <!-- http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html -->
+    <depends>com.intellij.modules.lang</depends>
 
-  <extensions defaultExtensionNs="com.intellij">
-      <fileTypeFactory implementation="codes.rudolph.idea.cfgr.FileTypeFactory"/>
-      <lang.parserDefinition language="CfgrLanguage" implementationClass="codes.rudolph.idea.cfgr.ParserDefinition"/>
-      <lang.syntaxHighlighterFactory language="CfgrLanguage" implementationClass="codes.rudolph.idea.cfgr.SyntaxHighlighterFactory"/>
-      <colorSettingsPage implementation="codes.rudolph.idea.cfgr.ColorSettingsPage"/>
-  </extensions>
+    <extensions defaultExtensionNs="com.intellij">
+        <fileTypeFactory implementation="codes.rudolph.idea.cfg.FileTypeFactory"/>
+        <lang.parserDefinition language="CfgrLanguage" implementationClass="codes.rudolph.idea.cfg.ParserDefinition"/>
+        <lang.syntaxHighlighterFactory language="CfgrLanguage"
+                                       implementationClass="codes.rudolph.idea.cfg.SyntaxHighlighterFactory"/>
+        <colorSettingsPage implementation="codes.rudolph.idea.cfg.ColorSettingsPage"/>
+    </extensions>
 
-  <actions>
-    <!-- Add your actions here -->
-  </actions>
+    <actions>
+        <!-- Add your actions here -->
+    </actions>
 </idea-plugin>

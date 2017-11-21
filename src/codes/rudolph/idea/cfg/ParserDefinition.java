@@ -1,8 +1,8 @@
-package codes.rudolph.idea.cfgr;
+package codes.rudolph.idea.cfg;
 
-import codes.rudolph.idea.cfgr.parser.Parser;
-import codes.rudolph.idea.cfgr.psi.File;
-import codes.rudolph.idea.cfgr.psi.Types;
+import codes.rudolph.idea.cfg.parser.Parser;
+import codes.rudolph.idea.cfg.psi.File;
+import codes.rudolph.idea.cfg.psi.Types;
 import com.intellij.lang.ASTNode;
 import com.intellij.lang.PsiParser;
 import com.intellij.lexer.Lexer;

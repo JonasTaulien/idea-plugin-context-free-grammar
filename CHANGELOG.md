@@ -18,7 +18,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 (removed features)
 
 ### Fixed
-(fixed bugs)
+* Unchanged the id in the plugin.xml because JetBrains does not allow this
 
 ### Security
 (security fixes)
@@ -30,7 +30,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [0.3.0] - 2017-11-21
 ### Changed
-* Changed file extension from `.cfg` to `.cfgr` because of [Issue #1](https://github.com/JonasRudolph/idea-plugin-context-free-grammar/issues/1)
+* Changed file extension from `.cfg` to `.cfg` because of [Issue #1](https://github.com/JonasRudolph/idea-plugin-context-free-grammar/issues/1)
 
 ### Maintenance
 * Removed `Cfg`-Prefix from most classes

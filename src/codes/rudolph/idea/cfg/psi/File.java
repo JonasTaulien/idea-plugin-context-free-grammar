@@ -1,7 +1,7 @@
-package codes.rudolph.idea.cfgr.psi;
+package codes.rudolph.idea.cfg.psi;
 
-import codes.rudolph.idea.cfgr.FileType;
-import codes.rudolph.idea.cfgr.Language;
+import codes.rudolph.idea.cfg.FileType;
+import codes.rudolph.idea.cfg.Language;
 import com.intellij.extapi.psi.PsiFileBase;
 import com.intellij.psi.FileViewProvider;
 import org.jetbrains.annotations.NotNull;
