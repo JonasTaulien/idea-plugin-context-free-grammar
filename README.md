@@ -1,10 +1,10 @@
 # JetBrains IDEA support for context free grammars
-This plugin brings in support for working with context free grammars in the form of `.cfg`-files.  
+This plugin brings in support for working with context free grammars in the form of `.cfgr`-files.  
 
 ## Context Free Grammar-Syntax
-You can view the exact Grammar as BNF in the [ContextFreeGrammar.bnf](src/codes/rudolph/idea/cfg/ContextFreeGrammar.bnf)-file.  
+You can view the exact Grammar as BNF in the [ContextFreeGrammar.bnf](src/codes/rudolph/idea/cfgr/ContextFreeGrammar.bnf)-file.  
 
-A `.cfg`-file contains definitions and comments. There are three types of definitions:
+A `.cfgr`-file contains definitions and comments. There are three types of definitions:
 * Module definitions
 * Import definition
 * Rule definitions
@@ -12,8 +12,8 @@ A `.cfg`-file contains definitions and comments. There are three types of defini
 Definitions must always end with a semicolon (`;`).
 
 ### Module definition
-Each Grammar must be placed in a file which is named `<ModuleName>.cfg`.  
-The first definition in such a Grammar file must be the Module definition. If you named the file `A.cfg`, the Grammar must start with:
+Each Grammar must be placed in a file which is named `<ModuleName>.cfgr`.  
+The first definition in such a Grammar file must be the Module definition. If you named the file `A.cfgr`, the Grammar must start with:
 ```cfgr
 module A;
 ```
@@ -189,13 +189,13 @@ module A;
 
 import B;
 ```
-By doing this, you can also use Rules that you or others have defined in `B.cfg`. You can now reference these Rules as `B.RuleName`. You can also rename Modules to something else in your current Grammar:
+By doing this, you can also use Rules that you or others have defined in `B.cfgr`. You can now reference these Rules as `B.RuleName`. You can also rename Modules to something else in your current Grammar:
 ```cfgr
 module A;
 
 import B.C as D;
 ```
-In this case, there must exist a file `./B/C.cfg` (relative to `A.cfg`). You can now use the Rules from this file by prefixing them with `D.`.
+In this case, there must exist a file `./B/C.cfgr` (relative to `A.cfgr`). You can now use the Rules from this file by prefixing them with `D.`.
 
 Summary:
 * `import A;` Brings into scope: `A.RuleA`, `A.RuleB`, `A.RuleC` ...
