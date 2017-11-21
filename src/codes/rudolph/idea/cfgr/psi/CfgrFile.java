@@ -1,7 +1,7 @@
-package codes.rudolph.idea.cfg.psi;
+package codes.rudolph.idea.cfgr.psi;
 
-import codes.rudolph.idea.cfg.CfgFileType;
-import codes.rudolph.idea.cfg.CfgLanguage;
+import codes.rudolph.idea.cfgr.CfgrFileType;
+import codes.rudolph.idea.cfgr.CfgrLanguage;
 import com.intellij.extapi.psi.PsiFileBase;
 import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.psi.FileViewProvider;
@@ -9,15 +9,15 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 
-public class CfgFile extends PsiFileBase {
-    public CfgFile(@NotNull FileViewProvider viewProvider) {
-        super(viewProvider, CfgLanguage.INSTANCE);
+public class CfgrFile extends PsiFileBase {
+    public CfgrFile(@NotNull FileViewProvider viewProvider) {
+        super(viewProvider, CfgrLanguage.INSTANCE);
     }
 
     @NotNull
     @Override
     public FileType getFileType() {
-        return CfgFileType.INSTANCE;
+        return CfgrFileType.INSTANCE;
     }
 
     @Override

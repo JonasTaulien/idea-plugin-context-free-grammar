@@ -1,24 +1,24 @@
-package codes.rudolph.idea.cfg;
+package codes.rudolph.idea.cfgr;
 
 import com.intellij.lang.*;
 import com.intellij.lexer.Lexer;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.*;
 import com.intellij.psi.tree.*;
-import codes.rudolph.idea.cfg.parser.CfgParser;
-import codes.rudolph.idea.cfg.psi.*;
+import codes.rudolph.idea.cfgr.parser.CfgrParser;
+import codes.rudolph.idea.cfgr.psi.*;
 import org.jetbrains.annotations.NotNull;
 
-public class CfgParserDefinition implements ParserDefinition {
+public class CfgrParserDefinition implements ParserDefinition {
     public static final TokenSet WHITE_SPACES = TokenSet.create(TokenType.WHITE_SPACE);
-    public static final TokenSet COMMENTS = TokenSet.create(CfgTypes.COMMENT);
+    public static final TokenSet COMMENTS = TokenSet.create(CfgrTypes.COMMENT);
 
-    public static final IFileElementType FILE = new IFileElementType(CfgLanguage.INSTANCE);
+    public static final IFileElementType FILE = new IFileElementType(CfgrLanguage.INSTANCE);
 
     @NotNull
     @Override
     public Lexer createLexer(Project project) {
-        return new CfgLexerAdapter();
+        return new CfgrLexerAdapter();
     }
 
     @NotNull
@@ -38,7 +38,7 @@ public class CfgParserDefinition implements ParserDefinition {
 
     @NotNull
     public PsiParser createParser(final Project project) {
-        return new CfgParser();
+        return new CfgrParser();
     }
 
     @Override
@@ -47,7 +47,7 @@ public class CfgParserDefinition implements ParserDefinition {
     }
 
     public PsiFile createFile(FileViewProvider viewProvider) {
-        return new CfgFile(viewProvider);
+        return new CfgrFile(viewProvider);
     }
 
     public SpaceRequirements spaceExistanceTypeBetweenTokens(ASTNode left, ASTNode right) {
@@ -56,6 +56,6 @@ public class CfgParserDefinition implements ParserDefinition {
 
     @NotNull
     public PsiElement createElement(ASTNode node) {
-        return CfgTypes.Factory.createElement(node);
+        return CfgrTypes.Factory.createElement(node);
     }
 }

@@ -1,4 +1,4 @@
-package codes.rudolph.idea.cfg;
+package codes.rudolph.idea.cfgr;
 
 import com.intellij.openapi.fileTypes.SyntaxHighlighter;
 import com.intellij.openapi.fileTypes.SyntaxHighlighterFactory;
@@ -7,10 +7,10 @@ import com.intellij.openapi.vfs.VirtualFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class CfgSyntaxHighlighterFactory extends SyntaxHighlighterFactory {
+public class CfgrSyntaxHighlighterFactory extends SyntaxHighlighterFactory {
     @NotNull
     @Override
     public SyntaxHighlighter getSyntaxHighlighter(@Nullable Project project, @Nullable VirtualFile virtualFile) {
-        return new CfgSyntaxHighlighter();
+        return new CfgrSyntaxHighlighter();
     }
 }

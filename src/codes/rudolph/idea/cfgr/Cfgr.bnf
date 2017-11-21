@@ -1,18 +1,18 @@
 {
-  parserClass="codes.rudolph.idea.cfg.parser.CfgParser"
+  parserClass="codes.rudolph.idea.cfgr.parser.CfgrParser"
 
   extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
 
-  psiClassPrefix="Cfg"
+  psiClassPrefix="Cfgr"
   psiImplClassSuffix="Impl"
-  psiPackage="codes.rudolph.idea.cfg.psi"
-  psiImplPackage="codes.rudolph.idea.cfg.psi.impl"
+  psiPackage="codes.rudolph.idea.cfgr.psi"
+  psiImplPackage="codes.rudolph.idea.cfgr.psi.impl"
 
-  elementTypeHolderClass="codes.rudolph.idea.cfg.psi.CfgTypes"
-  elementTypeClass="codes.rudolph.idea.cfg.psi.CfgElementType"
-  tokenTypeClass="codes.rudolph.idea.cfg.psi.CfgTokenType"
+  elementTypeHolderClass="codes.rudolph.idea.cfgr.psi.CfgrTypes"
+  elementTypeClass="codes.rudolph.idea.cfgr.psi.CfgrElementType"
+  tokenTypeClass="codes.rudolph.idea.cfgr.psi.CfgrTokenType"
   
-  psiImplUtilClass="codes.rudolph.idea.cfg.psi.impl.CfgPsiImplUtil"
+  psiImplUtilClass="codes.rudolph.idea.cfgr.psi.impl.CfgrPsiImplUtil"
   
   tokens = [
       MODULE_DEF="module"

@@ -1,22 +1,22 @@
-package codes.rudolph.idea.cfg;
+package codes.rudolph.idea.cfgr;
 
 import com.intellij.lexer.FlexLexer;
 import com.intellij.psi.tree.IElementType;
 
 import static com.intellij.psi.TokenType.BAD_CHARACTER;
 import static com.intellij.psi.TokenType.WHITE_SPACE;
-import static codes.rudolph.idea.cfg.psi.CfgTypes.*;
+import static codes.rudolph.idea.cfgr.psi.CfgrTypes.*;
 
 %%
 
 %{
-  public CfgLexer() {
+  public CfgrLexer() {
     this((java.io.Reader)null);
   }
 %}
 
 %public
-%class CfgLexer
+%class CfgrLexer
 %implements FlexLexer
 %function advance
 %type IElementType

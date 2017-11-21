@@ -1,10 +1,10 @@
 # JetBrains IDEA support for context free grammars
-This plugin brings in support for working with context free Grammars in the form of `.cfg`-files.  
+This plugin brings in support for working with context free grammars in the form of `.cfgr`-files.  
 
 ## Contect Free Grammar-Syntax
-You can view the exact Grammar as BNF in the [Cfg.bnf](src/codes/rudolph/idea/cfg/Cfg.bnf)-file.  
+You can view the exact Grammar as BNF in the [Cfgr.bnf](src/codes/rudolph/idea/cfgr/Cfgr.bnf)-file.  
 
-A `.cfg`-file contains definitions and comments. There are three types of definitions:
+A `.cfgr`-file contains definitions and comments. There are three types of definitions:
 * Module definitions
 * Import definition
 * Rule definitions
@@ -12,15 +12,15 @@ A `.cfg`-file contains definitions and comments. There are three types of defini
 Definitions must always end with a semicolon (`;`).
 
 ### Module definition
-Each Grammar must be placed in a file which is named `<ModuleName>.cfg`.  
-The first definition in such a Grammar file must be the Module definition. If you named the file `A.cfg`, the Grammar must start with:
-```cfg
+Each Grammar must be placed in a file which is named `<ModuleName>.cfgr`.  
+The first definition in such a Grammar file must be the Module definition. If you named the file `A.cfgr`, the Grammar must start with:
+```cfgr
 module A;
 ```
 
 ### Rule definition
 In a Module you define Rules, which are essentially names for Expressions.
-```cfg
+```cfgr
 module A;
 
 B: <expression goes here>;
@@ -78,7 +78,7 @@ Mostly you don't have to think about if you are currently specifying a Character
 
 ###### Unicode
 Some characters are hard to write as a string. Because of this you can also write down unicode characters:
-```cfg
+```cfgr
 module A;
 
 NewLine: \u000A;
@@ -89,7 +89,7 @@ Unicode Expressions are case-insensitive. So you can also write `\u000a` in the 
 ##### None Terminal Expressions
 ###### Rule Reference
 You can reference a Rule by using its name:
-```cfg
+```cfgr
 module A;
 
 A: 'a';
@@ -100,7 +100,7 @@ The rule you reference must be defined in this module or in a module you import.
 
 ###### Sequence
 You can define a sequence by writing at least two expressions right after another:
-```cfg
+```cfgr
 module A;
 
 HW: 'Hello' 'World';
@@ -108,7 +108,7 @@ HW: 'Hello' 'World';
 
 ###### Alternative
 You can define an alternative by using the `|` operator.
-```cfg
+```cfgr
 module A;
 
 Language: 'PHP' | 'Java'
@@ -117,7 +117,7 @@ Language: 'PHP' | 'Java'
 
 ###### Optional
 You can specify an expression to be optional by wrapping it with brackets.
-```cfg
+```cfgr
 module A;
 
 Title: ['Prof.' | 'Dr.'] Name;
@@ -125,7 +125,7 @@ Title: ['Prof.' | 'Dr.'] Name;
 
 ###### Range
 You can specify a Range with the `-` operator:
-```cfg
+```cfgr
 module A;
 
 Unicode: \u0000-\uFFFF;
@@ -134,7 +134,7 @@ Ranges only allow Character- or Unicode-Expression on each side.
 
 ###### Exclusion
 You can exclude with the `/` operator:
-```cfg
+```cfgr
 module GraphQl;
 
 FragmentName: Name / 'on';
@@ -142,21 +142,21 @@ FragmentName: Name / 'on';
 
 ###### Repetition
 You can define a Repetition (1-to-n) by wrapping an Expression with braces:
-```cfg
+```cfgr
 module A;
 
 Name: {'a'-'z' | 'A'-'Z'};
 ```
 
 You can also specify the minimal repetitions (default = `1`):
-```cfg
+```cfgr
 module A;
 
 Name: {2> 'a'-'z' | 'A'-'Z'};
 ```
 
 And the maximal repetitions (default = `*`):
-```cfg
+```cfgr
 module A;
 
 Name: {2> 'a'-'z' | 'A'-'Z' <255};
@@ -164,7 +164,7 @@ Word: {'a'-'z' | 'A'-'Z' | '_' | '0'-'9' <*};
 ```
 
 There also exists a special list-syntax (`{ <Expression> $ <Expression> })`:
-```cfg
+```cfgr
 module MyLanguage;
 
 Array: '[' {0> Expression $ ',' <512} ']';
@@ -173,7 +173,7 @@ The above Expression is the shorthand for `'[' [Expression {0> ',' Expression <5
 
 ###### Group
 You can trick the default binding hierarchy by wrapping an Expression with parenthesis:
-```cfg
+```cfgr
 module A;
 
 R: B (C / D);
@@ -184,18 +184,18 @@ A comment begins with a `#` and ends with a line breaking character.
 
 ### Import definition
 Every Grammar can import Rules from other Grammars. Import definitions must be written below the Module definition and above the first Rule:
-```cfg
+```cfgr
 module A;
 
 import B;
 ```
-By doing this, you can also use Rules that you or others have defined in `B.cfg`. You can now reference these Rules as `B.RuleName`. You can also rename Modules to something else in your current Grammar:
-```cfg
+By doing this, you can also use Rules that you or others have defined in `B.cfgr`. You can now reference these Rules as `B.RuleName`. You can also rename Modules to something else in your current Grammar:
+```cfgr
 module A;
 
 import B.C as D;
 ```
-In this case, there must exist a file `./B/C.cfg` (relative to `A.cfg`). You can now use the Rules from this file by prefixing them with `D.`.
+In this case, there must exist a file `./B/C.cfgr` (relative to `A.cfgr`). You can now use the Rules from this file by prefixing them with `D.`.
 
 Summary:
 * `import A;` Brings into scope: `A.RuleA`, `A.RuleB`, `A.RuleC` ...

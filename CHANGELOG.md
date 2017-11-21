@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 (new features)
 
 ### Changed
-(changes in existing functionality)
+* Changed 
 
 ### Deprecated
 (changes that will be removed in an upcoming release)

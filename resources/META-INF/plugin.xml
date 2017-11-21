@@ -1,5 +1,5 @@
 <idea-plugin>
-  <id>codes.rudolph.idea.cfg</id>
+  <id>codes.rudolph.idea.cfgr</id>
   <name>Context Free Grammar</name>
   <version>0.2.0</version>
   <vendor email="jonas.ru@gmx.de" url="http://www.rudolph.codes">Jonas Rudolph</vendor>
@@ -24,10 +24,10 @@
   <depends>com.intellij.modules.lang</depends>
 
   <extensions defaultExtensionNs="com.intellij">
-      <fileTypeFactory implementation="codes.rudolph.idea.cfg.CfgFileTypeFactory"/>
-      <lang.parserDefinition language="CfgLanguage" implementationClass="codes.rudolph.idea.cfg.CfgParserDefinition"/>
-      <lang.syntaxHighlighterFactory language="CfgLanguage" implementationClass="codes.rudolph.idea.cfg.CfgSyntaxHighlighterFactory"/>
-      <colorSettingsPage implementation="codes.rudolph.idea.cfg.CfgColorSettingsPage"/>
+      <fileTypeFactory implementation="codes.rudolph.idea.cfgr.CfgrFileTypeFactory"/>
+      <lang.parserDefinition language="CfgrLanguage" implementationClass="codes.rudolph.idea.cfgr.CfgrParserDefinition"/>
+      <lang.syntaxHighlighterFactory language="CfgrLanguage" implementationClass="codes.rudolph.idea.cfgr.CfgrSyntaxHighlighterFactory"/>
+      <colorSettingsPage implementation="codes.rudolph.idea.cfgr.CfgrColorSettingsPage"/>
   </extensions>
 
   <actions>

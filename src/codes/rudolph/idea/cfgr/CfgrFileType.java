@@ -1,4 +1,4 @@
-package codes.rudolph.idea.cfg;
+package codes.rudolph.idea.cfgr;
 
 import com.intellij.openapi.fileTypes.LanguageFileType;
 import org.jetbrains.annotations.NotNull;
@@ -6,12 +6,12 @@ import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 
-public class CfgFileType extends LanguageFileType {
-    public static final CfgFileType INSTANCE = new CfgFileType();
+public class CfgrFileType extends LanguageFileType {
+    public static final CfgrFileType INSTANCE = new CfgrFileType();
 
 
-    private CfgFileType() {
-        super(CfgLanguage.INSTANCE);
+    private CfgrFileType() {
+        super(CfgrLanguage.INSTANCE);
     }
 
     @NotNull
@@ -29,12 +29,12 @@ public class CfgFileType extends LanguageFileType {
     @NotNull
     @Override
     public String getDefaultExtension() {
-        return "cfg";
+        return "cfgr";
     }
 
     @Nullable
     @Override
     public Icon getIcon() {
-        return CfgIcons.FILE;
+        return CfgrIcons.FILE;
     }
 }
