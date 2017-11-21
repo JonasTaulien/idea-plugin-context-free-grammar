@@ -18,13 +18,19 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 (removed features)
 
 ### Fixed
-* Unchanged the id in the plugin.xml because JetBrains does not allow this
+(fixed bugs)
 
 ### Security
 (security fixes)
 
 ### Maintenance
 (other changes, that are only interesting for developers of this project)
+
+
+
+## [0.3.1] - 2017-11-21
+### Fixed
+* Unchanged the id in the plugin.xml because JetBrains does not allow this
 
 
 
