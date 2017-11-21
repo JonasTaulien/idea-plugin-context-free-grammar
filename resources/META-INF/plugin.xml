@@ -6,11 +6,10 @@
     <vendor email="jonas.ru@gmx.de" url="http://www.rudolph.codes">Jonas Rudolph</vendor>
 
     <description><![CDATA[
-      Adds support for EBNF-like context free grammars.<br>
+      Adds support for context free grammars in the form of cfgr files.<br>
       This plugin currently is meant for working with grammars in the specification and/or documentation phase.<br>
       For a detailed description read the <a href="https://github.com/JonasRudolph/idea-plugin-context-free-grammar/blob/master/README.md">README</a>.<br>
-      Read the <a href="https://github.com/JonasRudolph/idea-plugin-context-free-grammar/blob/master/TODO.md">TODO-List</a> for knowing what I plan to add or change in future releases.<br>
-      Made by <a href="http://www.rudolph.codes">Jonas Rudolph</a>
+      Read the <a href="https://github.com/JonasRudolph/idea-plugin-context-free-grammar/blob/master/TODO.md">TODO-List</a> for knowing what I plan to add or change in future releases.
     ]]></description>
 
     <change-notes><![CDATA[
