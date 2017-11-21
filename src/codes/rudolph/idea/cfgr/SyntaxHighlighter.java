@@ -1,6 +1,6 @@
 package codes.rudolph.idea.cfgr;
 
-import codes.rudolph.idea.cfgr.psi.CfgrTypes;
+import codes.rudolph.idea.cfgr.psi.Types;
 import com.intellij.lexer.Lexer;
 import com.intellij.openapi.editor.DefaultLanguageHighlighterColors;
 import com.intellij.openapi.editor.HighlighterColors;
@@ -12,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 
 import static com.intellij.openapi.editor.colors.TextAttributesKey.createTextAttributesKey;
 
-public class CfgrSyntaxHighlighter extends SyntaxHighlighterBase {
+public class SyntaxHighlighter extends SyntaxHighlighterBase {
 
     public static final TextAttributesKey ALIAS_OP = createTextAttributesKey(
             "CGFR_ALIAS_OP", DefaultLanguageHighlighterColors.KEYWORD
@@ -99,63 +99,63 @@ public class CfgrSyntaxHighlighter extends SyntaxHighlighterBase {
     @NotNull
     @Override
     public Lexer getHighlightingLexer() {
-        return new CfgrLexerAdapter();
+        return new LexerAdapter();
     }
 
     @NotNull
     @Override
     public TextAttributesKey[] getTokenHighlights(IElementType tokenType) {
-        if (tokenType.equals(CfgrTypes.ALIAS_OP)) {
+        if (tokenType.equals(Types.ALIAS_OP)) {
             return new TextAttributesKey[]{ALIAS_OP};
-        } else if (tokenType.equals(CfgrTypes.ALT_OP)) {
+        } else if (tokenType.equals(Types.ALT_OP)) {
             return new TextAttributesKey[]{ALT_OP};
-        } else if (tokenType.equals(CfgrTypes.COMMENT)) {
+        } else if (tokenType.equals(Types.COMMENT)) {
             return new TextAttributesKey[]{COMMENT};
-        } else if (tokenType.equals(CfgrTypes.DEFINITION_END)) {
+        } else if (tokenType.equals(Types.DEFINITION_END)) {
             return new TextAttributesKey[]{DEFINITION_END};
-        } else if (tokenType.equals(CfgrTypes.EXC_OP)) {
+        } else if (tokenType.equals(Types.EXC_OP)) {
             return new TextAttributesKey[]{EXC_OP};
-        } else if (tokenType.equals(CfgrTypes.GR_CLOSE)) {
+        } else if (tokenType.equals(Types.GR_CLOSE)) {
             return new TextAttributesKey[]{GR_CLOSE};
-        } else if (tokenType.equals(CfgrTypes.GR_OPEN)) {
+        } else if (tokenType.equals(Types.GR_OPEN)) {
             return new TextAttributesKey[]{GR_OPEN};
-        } else if (tokenType.equals(CfgrTypes.ID)) {
+        } else if (tokenType.equals(Types.ID)) {
             return new TextAttributesKey[]{ID};
-        } else if (tokenType.equals(CfgrTypes.IMPORT_DEF)) {
+        } else if (tokenType.equals(Types.IMPORT_DEF)) {
             return new TextAttributesKey[]{IMPORT_DEF};
-        } else if (tokenType.equals(CfgrTypes.INFINITE)) {
+        } else if (tokenType.equals(Types.INFINITE)) {
             return new TextAttributesKey[]{INFINITE};
-        } else if (tokenType.equals(CfgrTypes.MODULE_DEF)) {
+        } else if (tokenType.equals(Types.MODULE_DEF)) {
             return new TextAttributesKey[]{MODULE_DEF};
-        } else if (tokenType.equals(CfgrTypes.NATURAL_NUMBER)) {
+        } else if (tokenType.equals(Types.NATURAL_NUMBER)) {
             return new TextAttributesKey[]{NATURAL_NUMBER};
-        } else if (tokenType.equals(CfgrTypes.NON_ZERO_NATURAL_NUMBER)) {
+        } else if (tokenType.equals(Types.NON_ZERO_NATURAL_NUMBER)) {
             return new TextAttributesKey[]{NON_ZERO_NATURAL_NUMBER};
-        } else if (tokenType.equals(CfgrTypes.OPT_CLOSE)) {
+        } else if (tokenType.equals(Types.OPT_CLOSE)) {
             return new TextAttributesKey[]{OPT_CLOSE};
-        } else if (tokenType.equals(CfgrTypes.OPT_OPEN)) {
+        } else if (tokenType.equals(Types.OPT_OPEN)) {
             return new TextAttributesKey[]{OPT_OPEN};
-        } else if (tokenType.equals(CfgrTypes.REP_CLOSE)) {
+        } else if (tokenType.equals(Types.REP_CLOSE)) {
             return new TextAttributesKey[]{REP_CLOSE};
-        } else if (tokenType.equals(CfgrTypes.REP_DELIM)) {
+        } else if (tokenType.equals(Types.REP_DELIM)) {
             return new TextAttributesKey[]{REP_DELIM};
-        } else if (tokenType.equals(CfgrTypes.REP_MAX_OPEN)) {
+        } else if (tokenType.equals(Types.REP_MAX_OPEN)) {
             return new TextAttributesKey[]{REP_MAX_OPEN};
-        } else if (tokenType.equals(CfgrTypes.REP_MIN_CLOSE)) {
+        } else if (tokenType.equals(Types.REP_MIN_CLOSE)) {
             return new TextAttributesKey[]{REP_MIN_CLOSE};
-        } else if (tokenType.equals(CfgrTypes.REP_OPEN)) {
+        } else if (tokenType.equals(Types.REP_OPEN)) {
             return new TextAttributesKey[]{REP_OPEN};
-        } else if (tokenType.equals(CfgrTypes.RNG_OP)) {
+        } else if (tokenType.equals(Types.RNG_OP)) {
             return new TextAttributesKey[]{RNG_OP};
-        } else if (tokenType.equals(CfgrTypes.RUL_OP)) {
+        } else if (tokenType.equals(Types.RUL_OP)) {
             return new TextAttributesKey[]{RUL_OP};
-        } else if (tokenType.equals(CfgrTypes.MULTI_CHAR_STRING_TOK)) {
+        } else if (tokenType.equals(Types.MULTI_CHAR_STRING_TOK)) {
             return new TextAttributesKey[]{MULTI_CHAR_STRING_TOK};
-        } else if (tokenType.equals(CfgrTypes.ONE_CHAR_STRING_TOK)) {
+        } else if (tokenType.equals(Types.ONE_CHAR_STRING_TOK)) {
             return new TextAttributesKey[]{ONE_CHAR_STRING_TOK};
-        } else if (tokenType.equals(CfgrTypes.SUB_MODULE_OP)) {
+        } else if (tokenType.equals(Types.SUB_MODULE_OP)) {
             return new TextAttributesKey[]{SUB_MODULE_OP};
-        } else if (tokenType.equals(CfgrTypes.UNICODE_TOK)) {
+        } else if (tokenType.equals(Types.UNICODE_TOK)) {
             return new TextAttributesKey[]{UNICODE_TOK};
         } else if (tokenType.equals(TokenType.BAD_CHARACTER)) {
             return new TextAttributesKey[]{BAD_CHARACTER};

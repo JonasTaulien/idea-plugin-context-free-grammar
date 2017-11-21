@@ -6,12 +6,12 @@ import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 
-public class CfgrFileType extends LanguageFileType {
-    public static final CfgrFileType INSTANCE = new CfgrFileType();
+public class FileType extends LanguageFileType {
+    public static final FileType INSTANCE = new FileType();
 
 
-    private CfgrFileType() {
-        super(CfgrLanguage.INSTANCE);
+    private FileType() {
+        super(Language.INSTANCE);
     }
 
     @NotNull
@@ -35,6 +35,6 @@ public class CfgrFileType extends LanguageFileType {
     @Nullable
     @Override
     public Icon getIcon() {
-        return CfgrIcons.FILE;
+        return Icons.FILE;
     }
 }

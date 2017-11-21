@@ -1,5 +1,5 @@
 {
-  parserClass="codes.rudolph.idea.cfgr.parser.CfgrParser"
+  parserClass="codes.rudolph.idea.cfgr.parser.Parser"
 
   extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
 
@@ -8,11 +8,11 @@
   psiPackage="codes.rudolph.idea.cfgr.psi"
   psiImplPackage="codes.rudolph.idea.cfgr.psi.impl"
 
-  elementTypeHolderClass="codes.rudolph.idea.cfgr.psi.CfgrTypes"
-  elementTypeClass="codes.rudolph.idea.cfgr.psi.CfgrElementType"
-  tokenTypeClass="codes.rudolph.idea.cfgr.psi.CfgrTokenType"
+  elementTypeHolderClass="codes.rudolph.idea.cfgr.psi.Types"
+  elementTypeClass="codes.rudolph.idea.cfgr.psi.ElementType"
+  tokenTypeClass="codes.rudolph.idea.cfgr.psi.TokenType"
   
-  psiImplUtilClass="codes.rudolph.idea.cfgr.psi.impl.CfgrPsiImplUtil"
+  psiImplUtilClass="codes.rudolph.idea.cfgr.psi.impl.PsiImplUtil"
   
   tokens = [
       MODULE_DEF="module"

@@ -1,24 +1,30 @@
 package codes.rudolph.idea.cfgr;
 
-import com.intellij.lang.*;
+import codes.rudolph.idea.cfgr.parser.Parser;
+import codes.rudolph.idea.cfgr.psi.File;
+import codes.rudolph.idea.cfgr.psi.Types;
+import com.intellij.lang.ASTNode;
+import com.intellij.lang.PsiParser;
 import com.intellij.lexer.Lexer;
 import com.intellij.openapi.project.Project;
-import com.intellij.psi.*;
-import com.intellij.psi.tree.*;
-import codes.rudolph.idea.cfgr.parser.CfgrParser;
-import codes.rudolph.idea.cfgr.psi.*;
+import com.intellij.psi.FileViewProvider;
+import com.intellij.psi.PsiElement;
+import com.intellij.psi.PsiFile;
+import com.intellij.psi.TokenType;
+import com.intellij.psi.tree.IFileElementType;
+import com.intellij.psi.tree.TokenSet;
 import org.jetbrains.annotations.NotNull;
 
-public class CfgrParserDefinition implements ParserDefinition {
+public class ParserDefinition implements com.intellij.lang.ParserDefinition {
     public static final TokenSet WHITE_SPACES = TokenSet.create(TokenType.WHITE_SPACE);
-    public static final TokenSet COMMENTS = TokenSet.create(CfgrTypes.COMMENT);
+    public static final TokenSet COMMENTS = TokenSet.create(Types.COMMENT);
 
-    public static final IFileElementType FILE = new IFileElementType(CfgrLanguage.INSTANCE);
+    public static final IFileElementType FILE = new IFileElementType(Language.INSTANCE);
 
     @NotNull
     @Override
     public Lexer createLexer(Project project) {
-        return new CfgrLexerAdapter();
+        return new LexerAdapter();
     }
 
     @NotNull
@@ -38,7 +44,7 @@ public class CfgrParserDefinition implements ParserDefinition {
 
     @NotNull
     public PsiParser createParser(final Project project) {
-        return new CfgrParser();
+        return new Parser();
     }
 
     @Override
@@ -47,7 +53,7 @@ public class CfgrParserDefinition implements ParserDefinition {
     }
 
     public PsiFile createFile(FileViewProvider viewProvider) {
-        return new CfgrFile(viewProvider);
+        return new File(viewProvider);
     }
 
     public SpaceRequirements spaceExistanceTypeBetweenTokens(ASTNode left, ASTNode right) {
@@ -56,6 +62,6 @@ public class CfgrParserDefinition implements ParserDefinition {
 
     @NotNull
     public PsiElement createElement(ASTNode node) {
-        return CfgrTypes.Factory.createElement(node);
+        return Types.Factory.createElement(node);
     }
 }

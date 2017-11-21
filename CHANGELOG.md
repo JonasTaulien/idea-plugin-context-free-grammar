@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 (new features)
 
 ### Changed
-* Changed 
+* Changed file extension from `.cfg` to `.cfgr` because of JonasRudolph/idea-plugin-context-free-grammar#1
 
 ### Deprecated
 (changes that will be removed in an upcoming release)
@@ -24,7 +24,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 (security fixes)
 
 ### Maintenance
-(other changes, that are only interesting for developers of this project)
+* Removed `Cfg`-Prefix from most classes
 
 
 
