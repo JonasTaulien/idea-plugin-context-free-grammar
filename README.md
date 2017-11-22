@@ -163,7 +163,7 @@ Name: {2> 'a'-'z' | 'A'-'Z' <255};
 Word: {'a'-'z' | 'A'-'Z' | '_' | '0'-'9' <*};
 ```
 
-There also exists a special list-syntax (`{ <Expression> $ <Expression> })`:
+There also exists a special list-syntax (`{ <Expression> $ <Expression> }`):
 ```cfgr
 module MyLanguage;
 
