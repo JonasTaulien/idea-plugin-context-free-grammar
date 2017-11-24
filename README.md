@@ -2,7 +2,7 @@
 This plugin brings in support for working with context free grammars in the form of `.cfgr`-files.  
 
 ## Context Free Grammar-Syntax
-You can view the exact Grammar as BNF in the [ContextFreeGrammar.bnf](src/codes/rudolph/idea/cfgr/ContextFreeGrammar.bnf)-file.  
+You can view the exact Grammar as BNF in the [ContextFreeGrammar.bnf](src/codes/rudolph/idea/cfg/ContextFreeGrammar.bnf)-file.  
 
 A `.cfgr`-file contains definitions and comments. There are three types of definitions:
 * Module definitions
