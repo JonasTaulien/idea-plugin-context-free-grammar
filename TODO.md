@@ -2,6 +2,7 @@
 * Continue: http://www.jetbrains.org/intellij/sdk/docs/tutorials/custom_language_support/psi_helper_and_utilities.html
 
 ## High Prio
+* When cursor is next to `|`, `/` `-` or ` ` highlight which expressions belong to that operator so that the user knows where he has to place parenthesis to get the correct binding order
 * Try to make the semicolon optional.
 * Change unicode syntax from `\uXXXX` to `U+XXXXXX` where the last two `X` are optional.
 * Define discrete set of escape-able characters (`\n`, `\t`, `\'`, `\"` etc) and adjust syntax
