@@ -38,7 +38,8 @@
    ```
    or
    ```
-   String: QuoteEscape('"', \u0000-\u9999 ) | QuoteEscape("'", \u0000-\u9999 )
+   String: QuoteEscape('"', \u0000-\u9999) | QuoteEscape("'", \u0000-\u9999)
+   
    QuoteEscape(quote, elements): quote {(elements / quote) | Escape(quote)} quote
    Escape(toEscape): '\' toEscape
    ```
