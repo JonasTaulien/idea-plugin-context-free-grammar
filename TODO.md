@@ -27,6 +27,26 @@
 * Use 'recoverWhile' and 'name' attributes
 * Refactoring: Crate new rule from expression
 * Structure view
+* Add Patterns:
+   ```
+   Variable: VariableName OnlyOrOptional(':' Type, Expression);
+   OnlyOrOptional(x, y): x | [x] y;
+   ```
+   is equal to
+   ```
+   Variable: VariableName (':' Type | [':' Type] Expression)
+   ```
+   or
+   ```
+   String: QuoteEscape('"', \u0000-\u9999 ) | QuoteEscape("'", \u0000-\u9999 )
+   QuoteEscape(quote, elements): quote {(elements / quote) | Escape(quote)} quote
+   Escape(toEscape): '\' toEscape
+   ```
+   is equal to
+   ```
+   String: ('"' {(\u0000-\u9999  / '"') | '\' '"'} '"') 
+         | ("'" {(\u0000-\u9999  / "'") | '\' "'"} "'")
+   ```
 
 ## Low Prio
 * Own icon
