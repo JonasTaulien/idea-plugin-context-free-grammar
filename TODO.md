@@ -29,8 +29,8 @@
 * Structure view
 * Add Patterns:
    ```
-   Variable: VariableName OnlyOrOptional(':' Type, Expression);
-   OnlyOrOptional(x, y): x | [x] y;
+   Variable: VariableName AtLeastOne(':' Type, Expression);
+   AtLeastOne(x, y): x | [x] y;
    ```
    is equal to
    ```
